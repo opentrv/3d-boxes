@@ -19,10 +19,22 @@ Author(s) / Copyright (s): Bruno Girin 2013
 include <settings-dd1.scad>;
 include <box-common.scad>;
 
-module box_layer0() {
+module box_layer0(thickness=box_layer_thickness) {
     difference() {
-        box_base();
-        box_mounting_holes();
+        box_base(thickness);
+        box_mounting_holes(thickness);
+        translate([pcb_width * 3 / 10, -pcb_width / 10, -0.1])
+            cylinder(r = pcb_mounting_hole_radius + 1, h = thickness + 0.2);
+        translate([pcb_width * 3 / 10,  pcb_width / 10, -0.1])
+            cylinder(r = pcb_mounting_hole_radius, h = thickness + 0.2);
+        translate([pcb_width * 3 / 10 - pcb_mounting_hole_radius,  -pcb_width/10, -0.1])
+            cube(size = [pcb_mounting_hole_radius * 2, pcb_width / 5, thickness + 0.2]);
+        translate([-pcb_width * 3 / 10, -pcb_width / 10, -0.1])
+            cylinder(r = pcb_mounting_hole_radius + 1, h = thickness + 0.2);
+        translate([-pcb_width * 3 / 10,  pcb_width / 10, -0.1])
+            cylinder(r = pcb_mounting_hole_radius, h = thickness + 0.2);
+        translate([-pcb_width * 3 / 10 - pcb_mounting_hole_radius,  -pcb_width/10, -0.1])
+            cube(size = [pcb_mounting_hole_radius * 2, pcb_width / 5, thickness + 0.2]);
     }
 }
 
@@ -53,13 +65,29 @@ module box_layer1(thickness=box_layer_thickness) {
     }
 }
 
-module box_layer0_1_merged() {
+module box_layer2(thickness=box_layer_thickness) {
+    difference() {
+        box_base(thickness);
+        pcb_hole(thickness);
+        box_outside_hole(
+            prog_jack_side,
+            2 * prog_cable_radius,
+            box_layer_thickness + 0.1,
+            prog_jack_offset,
+            thickness
+        );
+    }
+}
+
+module box_layer0_1_2_merged() {
     union() {
         box_layer0();
         translate([0, 0, box_layer_thickness - 0.1])
             box_layer1(2 * box_layer_thickness + 0.1);
+        translate([0, 0, 3 * box_layer_thickness - 0.1])
+            box_layer2(pcb_thickness + 0.1);
     }
 }
 
-box_layer0_1_merged();
+box_layer0_1_2_merged();
 

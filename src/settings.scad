@@ -30,6 +30,7 @@ box_corner_radius = 2;
 pcb_mounting_hole_radius = 1.5; /* Fits an M3 bolt */
 pcb_mounting_hole_max_padding = 1.5;
 pcb_mounting_hole_to_edge = 1;
+pcb_thickness = 2;
 
 prog_cable_radius = 5;
 prog_jack_width = 6.2;
