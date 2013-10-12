@@ -17,7 +17,7 @@ Author(s) / Copyright (s): Bruno Girin 2013
 */
 
 use <incl/iso261-extended.scad>;
-include <settings.scad>;
+include <settings-trv.scad>;
 
 int_radius = screw_diameter / 2;
 ext_radius = int_radius + screw_thickness;

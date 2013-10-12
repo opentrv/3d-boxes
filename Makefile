@@ -14,7 +14,7 @@
 #  
 #  Author(s) / Copyright (s): Bruno Girin 2013
 
-STLFILES=stl/box_basic.stl stl/m30-connector.stl stl/trv-connector.stl
+STLFILES=stl/box-v0_09.stl stl/box-dd1.stl
 
 all: deps $(STLFILES)
 
@@ -36,8 +36,10 @@ mkdirs:
 	mkdir -p stl
 	mkdir -p src/incl
 
-clean:
+cleanstl:
 	rm -rf stl
+
+clean: cleanstl
 	rm -rf src/incl
 	rm -rf deps
 

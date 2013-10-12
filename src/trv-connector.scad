@@ -16,7 +16,7 @@ under the Licence.
 Author(s) / Copyright (s): Bruno Girin 2013
 */
 
-include <./settings.scad>;
+include <./settings-trv.scad>;
 
 screw_radius = screw_diameter / 2;
 ext_radius = screw_radius * 13.5 / 15.0;

@@ -16,23 +16,25 @@ under the Licence.
 Author(s) / Copyright (s): Bruno Girin 2013
 */
 
-/* General constants */
-TOP    = 0;
-RIGHT  = 1;
-BOTTOM = 2;
-LEFT   = 3;
+include <settings.scad>;
 
-/* Settings for the box itself */
-box_wall_width = 3;
-box_layer_thickness = 3;
-box_corner_radius = 2;
+/*
+PCB board measurements
 
-pcb_mounting_hole_radius = 1.5; /* Fits an M3 bolt */
-pcb_mounting_hole_max_padding = 1.5;
-pcb_mounting_hole_to_edge = 1;
+All measurements and placements are taken such that the version number (V0.09)
+is facing the right way up.
+*/
+/* The basic measurements of the PCB */
+pcb_width = 50;
+pcb_length = 50;
+pcb_thickness = 1.7;
 
-prog_cable_radius = 5;
-prog_jack_width = 6.2;
-prog_jack_depth = 18;
-prog_jack_surround_thickness = 2;
+/* Programming jack position */
+prog_jack_side = LEFT;
+prog_jack_offset = -16.1;
+
+/* Capacitor hole position */
+capacitor_side = TOP;
+capacitor_hole_width = 8;
+capacitor_hole_offset = 10;
 
