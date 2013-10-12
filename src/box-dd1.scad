@@ -89,5 +89,9 @@ module box_layer0_1_2_merged() {
     }
 }
 
-box_layer0_1_2_merged();
+module box_layer3() {
+    box_spacer_layer(10 * box_layer_thickness);
+}
+
+box_layer3();
 
