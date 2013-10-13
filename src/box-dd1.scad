@@ -76,6 +76,13 @@ module layer_2(thickness=box_layer_thickness) {
             prog_jack_offset,
             thickness
         );
+        box_outside_hole(
+            capacitor_side,
+            capacitor_hole_width,
+            box_layer_thickness + 0.1,
+            capacitor_hole_offset,
+            thickness
+        );
     }
 }
 
