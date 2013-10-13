@@ -16,7 +16,7 @@ under the Licence.
 Author(s) / Copyright (s): Bruno Girin 2013
 */
 
-use <incl/iso261-extended.scad>;
+use <include/iso261-extended.scad>;
 include <settings-trv.scad>;
 
 int_radius = screw_diameter / 2;

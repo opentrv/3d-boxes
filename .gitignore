@@ -5,6 +5,6 @@
 
 # automatically generated directories
 deps/
-src/incl/
+src/include/
 stl/
 

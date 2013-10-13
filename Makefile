@@ -16,30 +16,30 @@
 
 STLFILES=stl/box-v0_09.stl stl/box-dd1.stl
 
-all: deps $(STLFILES)
+all: includes $(STLFILES)
 
-deps: mkdirs deps/nuts-n-bolts
+deps: deps/nuts-n-bolts
 
 deps/nuts-n-bolts:
 	git clone git@github.com:brunogirin/nuts-n-bolts.git deps/nuts-n-bolts
 	deps/nuts-n-bolts/build.sh
-	cp deps/nuts-n-bolts/build/scad/iso261-extended.scad src/incl
-	cp deps/nuts-n-bolts/build/scad/screw.scad src/incl
+
+includes: deps
+	mkdir -p src/include
+	cp deps/nuts-n-bolts/build/scad/iso261-extended.scad src/include
+	cp deps/nuts-n-bolts/build/scad/screw.scad src/include
 
 # explicit wildcard expansion suppresses errors when no files are found
 include $(wildcard *.deps)
 
 stl/%.stl: src/%.scad
+	mkdir -p stl
 	openscad -m make -o $@ -d $@.deps $<
 
-mkdirs:
-	mkdir -p stl
-	mkdir -p src/incl
-
-cleanstl:
+clean:
+	rm -rf src/include
 	rm -rf stl
 
-clean: cleanstl
-	rm -rf src/incl
+cleanall: clean
 	rm -rf deps
 
