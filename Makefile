@@ -20,6 +20,8 @@ V0_09_LAYERS=stl/box_layer-v0_09-0.stl stl/box_layer-v0_09-1.stl stl/box_layer-v
 DD1_LAYERS=stl/box_layer-dd1-0_1_2_merged.stl stl/box_layer-dd1-3.stl
 TRV_LAYERS=stl/m30-connector.stl stl/trv-connector.stl
 
+INCLUDE_TARGETS != grep -l '<include/' src/*.scad
+
 all: $(PACKAGES)
 
 deps: deps/nuts-n-bolts
@@ -27,6 +29,8 @@ deps: deps/nuts-n-bolts
 deps/nuts-n-bolts:
 	git clone git@github.com:brunogirin/nuts-n-bolts.git deps/nuts-n-bolts
 	deps/nuts-n-bolts/build.sh
+
+$(INCLUDE_TARGETS): includes
 
 includes: deps
 	mkdir -p src/include
