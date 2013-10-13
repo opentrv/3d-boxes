@@ -19,7 +19,7 @@ Author(s) / Copyright (s): Bruno Girin 2013
 include <settings-dd1.scad>;
 include <box-common.scad>;
 
-module box_layer0(thickness=box_layer_thickness) {
+module layer_0(thickness=box_layer_thickness) {
     difference() {
         box_base(thickness);
         box_mounting_holes(thickness);
@@ -38,7 +38,7 @@ module box_layer0(thickness=box_layer_thickness) {
     }
 }
 
-module box_layer1(thickness=box_layer_thickness) {
+module layer_1(thickness=box_layer_thickness) {
     difference() {
         box_spacer_layer(thickness);
         box_outside_hole(
@@ -65,7 +65,7 @@ module box_layer1(thickness=box_layer_thickness) {
     }
 }
 
-module box_layer2(thickness=box_layer_thickness) {
+module layer_2(thickness=box_layer_thickness) {
     difference() {
         box_base(thickness);
         pcb_hole(thickness);
@@ -79,7 +79,7 @@ module box_layer2(thickness=box_layer_thickness) {
     }
 }
 
-module box_layer0_1_2_merged() {
+module layer_0_1_2_merged() {
     union() {
         box_layer0();
         translate([0, 0, box_layer_thickness - 0.1])
@@ -89,7 +89,7 @@ module box_layer0_1_2_merged() {
     }
 }
 
-module box_layer3() {
+module layer_3() {
     box_spacer_layer(10 * box_layer_thickness);
 }
 

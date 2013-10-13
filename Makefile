@@ -36,9 +36,13 @@ stl/%.stl: src/%.scad
 	mkdir -p stl
 	openscad -m make -o $@ -d $@.deps $<
 
+src/box_layer-%.scad:
+	./generate-layer.sh $@
+
 clean:
 	rm -rf src/include
 	rm -rf stl
+	rm src/box_layer-*.scad
 
 cleanall: clean
 	rm -rf deps

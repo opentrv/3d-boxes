@@ -19,14 +19,14 @@ Author(s) / Copyright (s): Bruno Girin 2013
 include <settings-v0_09.scad>;
 include <box-common.scad>;
 
-module box_layer0() {
+module layer_0() {
     difference() {
         box_base();
         box_mounting_holes();
     }
 }
 
-module box_layer1() {
+module layer_1() {
     difference() {
         union() {
             box_spacer_layer();
@@ -46,7 +46,7 @@ module box_layer1() {
     }
 }
 
-module box_layer2() {
+module layer_2() {
     difference() {
         box_base();
         pcb_hole();
@@ -59,7 +59,7 @@ module box_layer2() {
     }
 }
 
-module box_layer3() {
+module layer_3() {
     difference() {
         union() {
             box_spacer_layer();
@@ -93,14 +93,14 @@ module box_layer3() {
 
 
 translate([0, 0, -15])
-box_layer0();
+layer_0();
 
 translate([0, 0, -5])
-box_layer1();
+layer_1();
 
 translate([0, 0, 5])
-box_layer2();
+layer_2();
 
 translate([0, 0, 15])
-box_layer3();
+layer_3();
 
