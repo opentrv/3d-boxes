@@ -21,6 +21,7 @@ Buiding the STL files
 ---------------------
 
 This is the easy part, just run:
+
     make
 
 It will then create an `stl` directory that will contain one `.package`
@@ -34,6 +35,7 @@ Cleaning up the build products
 ------------------------------
 
 You can clean up build products in two ways:
+
     make clean
     make cleanall
 
