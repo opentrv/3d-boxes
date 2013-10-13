@@ -31,6 +31,10 @@ component of the box.
 Note that on the first run, you shold be connected to the internet as it will
 download dependencies needed for some of the boxes.
 
+You can also generate a single package if you know which one you want:
+
+    make stl/box-dd1.package
+
 Cleaning up the build products
 ------------------------------
 
