@@ -14,9 +14,13 @@
 #  
 #  Author(s) / Copyright (s): Bruno Girin 2013
 
-STLFILES=stl/box-v0_09.stl stl/box-dd1.stl
+PACKAGES=stl/box-v0_09.package stl/box-dd1.package stl/trv.package
 
-all: includes $(STLFILES)
+V0_09_LAYERS=stl/box_layer-v0_09-0.stl stl/box_layer-v0_09-1.stl stl/box_layer-v0_09-2.stl stl/box_layer-v0_09-3.stl
+DD1_LAYERS=stl/box_layer-dd1-0_1_2_merged.stl stl/box_layer-dd1-3.stl
+TRV_LAYERS=stl/m30-connector.stl stl/trv-connector.stl
+
+all: $(PACKAGES)
 
 deps: deps/nuts-n-bolts
 
@@ -39,10 +43,18 @@ stl/%.stl: src/%.scad
 src/box_layer-%.scad:
 	./generate-layer.sh $@
 
+stl/box-v0_09.package: $(V0_09_LAYERS)
+stl/box-dd1.package: $(DD1_LAYERS)
+stl/trv.package: $(TRV_LAYERS)
+stl/%.package:
+	rm -rf $@
+	mkdir -p $@
+	cp $^ $@
+
 clean:
 	rm -rf src/include
 	rm -rf stl
-	rm src/box_layer-*.scad
+	rm -f src/box_layer-*.scad
 
 cleanall: clean
 	rm -rf deps

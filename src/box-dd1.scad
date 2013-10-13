@@ -81,11 +81,11 @@ module layer_2(thickness=box_layer_thickness) {
 
 module layer_0_1_2_merged() {
     union() {
-        box_layer0();
+        layer_0();
         translate([0, 0, box_layer_thickness - 0.1])
-            box_layer1(2 * box_layer_thickness + 0.1);
+            layer_1(2 * box_layer_thickness + 0.1);
         translate([0, 0, 3 * box_layer_thickness - 0.1])
-            box_layer2(pcb_thickness + 0.1);
+            layer_2(pcb_thickness + 0.1);
     }
 }
 
