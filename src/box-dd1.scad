@@ -23,18 +23,7 @@ module layer_0(thickness=box_layer_thickness) {
     difference() {
         box_base(thickness);
         box_mounting_holes(thickness);
-        translate([pcb_width * 3 / 10, -pcb_width / 10, -0.1])
-            cylinder(r = pcb_mounting_hole_radius + 1, h = thickness + 0.2);
-        translate([pcb_width * 3 / 10,  pcb_width / 10, -0.1])
-            cylinder(r = pcb_mounting_hole_radius, h = thickness + 0.2);
-        translate([pcb_width * 3 / 10 - pcb_mounting_hole_radius,  -pcb_width/10, -0.1])
-            cube(size = [pcb_mounting_hole_radius * 2, pcb_width / 5, thickness + 0.2]);
-        translate([-pcb_width * 3 / 10, -pcb_width / 10, -0.1])
-            cylinder(r = pcb_mounting_hole_radius + 1, h = thickness + 0.2);
-        translate([-pcb_width * 3 / 10,  pcb_width / 10, -0.1])
-            cylinder(r = pcb_mounting_hole_radius, h = thickness + 0.2);
-        translate([-pcb_width * 3 / 10 - pcb_mounting_hole_radius,  -pcb_width/10, -0.1])
-            cube(size = [pcb_mounting_hole_radius * 2, pcb_width / 5, thickness + 0.2]);
+        box_wall_mount_screw_holes(thickness);
     }
 }
 

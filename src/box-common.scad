@@ -168,3 +168,21 @@ module box_spacer_layer(thickness=box_layer_thickness) {
     }
 }
 
+module box_wall_mount_screw_hole(thickness=box_layer_thickness) {
+        translate([0, -pcb_width / 10, -0.1])
+            cylinder(r = pcb_mounting_hole_radius * 2, h = thickness + 0.2);
+        translate([0,  pcb_width / 10, -0.1])
+            cylinder(r = pcb_mounting_hole_radius, h = thickness + 0.2);
+        translate([-pcb_mounting_hole_radius,  -pcb_width/10, -0.1])
+            cube(size = [pcb_mounting_hole_radius * 2, pcb_width / 5, thickness + 0.2]);
+}
+
+module box_wall_mount_screw_holes(thickness=box_layer_thickness) {
+    union() {
+        translate([-pcb_width * 3 / 10, 0, 0])
+            box_wall_mount_screw_hole(thickness);
+        translate([ pcb_width * 3 / 10, 0, 0])
+            box_wall_mount_screw_hole(thickness);
+    }
+}
+
