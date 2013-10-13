@@ -100,5 +100,9 @@ module layer_3() {
     box_spacer_layer(10 * box_layer_thickness);
 }
 
-box_layer3();
+layer_0_1_2_merged();
+
+translate([0, 0, 20])
+    layer_3();
+
 
