@@ -1,0 +1,10 @@
+# .gitignore for opentrv-3d
+
+# gedit backup files
+*~
+
+# automatically generated directories
+deps/
+src/incl/
+stl/
+
