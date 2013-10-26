@@ -107,13 +107,13 @@ module box_mounting_hole_surrounds(thickness=box_layer_thickness) {
 module box_base(thickness=box_layer_thickness) {
     hull() {
         translate([-box_cube_width / 2, -box_cube_length / 2, 0])
-        cylinder(r = box_corner_radius, h = thickness);
+        cylinder(r = box_corner_radius, h = thickness, $fn=cylinder_resolution);
         translate([+box_cube_width / 2, -box_cube_length / 2, 0])
-        cylinder(r = box_corner_radius, h = thickness);
+        cylinder(r = box_corner_radius, h = thickness, $fn=cylinder_resolution);
         translate([+box_cube_width / 2, +box_cube_length / 2, 0])
-        cylinder(r = box_corner_radius, h = thickness);
+        cylinder(r = box_corner_radius, h = thickness, $fn=cylinder_resolution);
         translate([-box_cube_width / 2, +box_cube_length / 2, 0])
-        cylinder(r = box_corner_radius, h = thickness);
+        cylinder(r = box_corner_radius, h = thickness, $fn=cylinder_resolution);
     }
 }
 
