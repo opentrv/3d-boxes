@@ -144,7 +144,7 @@ module box_inside_tab(side, width, depth, offset, thickness=box_layer_thickness)
 module box_outside_hole(side, width, depth, offset, thickness=box_layer_thickness) {
     if(side == TOP) {
         translate([offset - width / 2, box_total_length / 2 - depth, -0.1])
-        cube(size = [width, depth, thickness + 0.2]);
+        cube(size = [width, depth + 0.1, thickness + 0.2]);
     }
     if(side == BOTTOM) {
         translate([offset - width / 2, -box_total_length / 2 - 0.1, -0.1])
