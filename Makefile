@@ -42,8 +42,8 @@ V0_2R1_LAYERS+=stl/box_layer-v0_2r1-2.stl
 V0_2R1_LAYERS+=stl/box_layer-v0_2r1-3.stl
 stl/box-v0_2r1.package: $(V0_2R1_LAYERS)
 
-DD1_LAYERS =stl/box_layer-dd1-0_1_2_merged.stl
-DD1_LAYERS+=stl/box_layer-dd1-3.stl
+DD1_LAYERS =stl/box_layer-dd1-0.stl
+DD1_LAYERS+=stl/box_layer-dd1-1.stl
 stl/box-dd1.package: $(DD1_LAYERS)
 
 TRV_LAYERS =stl/m30-connector.stl

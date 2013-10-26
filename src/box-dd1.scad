@@ -19,7 +19,7 @@ Author(s) / Copyright (s): Bruno Girin 2013
 include <settings-dd1.scad>;
 include <box-common.scad>;
 
-module layer_0(thickness=box_layer_thickness) {
+module layer_0_0(thickness=box_layer_thickness) {
     difference() {
         box_base(thickness);
         box_mounting_holes(thickness);
@@ -27,7 +27,7 @@ module layer_0(thickness=box_layer_thickness) {
     }
 }
 
-module layer_1(thickness=box_layer_thickness) {
+module layer_0_1(thickness=box_layer_thickness) {
     difference() {
         box_spacer_layer(thickness);
         box_outside_hole(
@@ -54,10 +54,10 @@ module layer_1(thickness=box_layer_thickness) {
     }
 }
 
-module layer_2(thickness=box_layer_thickness) {
+module layer_0_2(thickness=box_layer_thickness) {
     difference() {
         box_base(thickness);
-        pcb_hole(thickness);
+        pcb_hole(thickness, hole_fudge_factor);
         box_outside_hole(
             prog_jack_side,
             2 * prog_cable_radius,
@@ -75,23 +75,23 @@ module layer_2(thickness=box_layer_thickness) {
     }
 }
 
-module layer_0_1_2_merged() {
+module layer_0() {
     union() {
-        layer_0();
+        layer_0_0();
         translate([0, 0, box_layer_thickness - 0.1])
-            layer_1(2 * box_layer_thickness + 0.1);
+            layer_0_1(2 * box_layer_thickness + 0.1);
         translate([0, 0, 3 * box_layer_thickness - 0.1])
-            layer_2(pcb_thickness + 0.1);
+            layer_0_2(pcb_thickness + 0.1);
     }
 }
 
-module layer_3() {
+module layer_1() {
     box_spacer_layer(10 * box_layer_thickness);
 }
 
-layer_0_1_2_merged();
+layer_0();
 
 translate([0, 0, 20])
-    layer_3();
+    layer_1();
 
 
