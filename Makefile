@@ -21,6 +21,7 @@
 # then add the dependencies for that package further down.
 
 PACKAGES=stl/box-v0_09.package stl/box-dd1.package stl/trv.package
+PACKAGES+=stl/box-v0_2r1.package
 
 all: includes $(PACKAGES)
 
@@ -28,10 +29,12 @@ all: includes $(PACKAGES)
 # followed by a dependency line.
 
 V0_09_LAYERS=stl/box_layer-v0_09-0.stl stl/box_layer-v0_09-1.stl stl/box_layer-v0_09-2.stl stl/box_layer-v0_09-3.stl
+V0_2R1_LAYERS=stl/box_layer-v0_2r1-0.stl
 DD1_LAYERS=stl/box_layer-dd1-0_1_2_merged.stl stl/box_layer-dd1-3.stl
 TRV_LAYERS=stl/m30-connector.stl stl/trv-connector.stl
 
 stl/box-v0_09.package: $(V0_09_LAYERS)
+stl/box-v0_2r1.package: $(V0_2R1_LAYERS)
 stl/box-dd1.package: $(DD1_LAYERS)
 stl/trv.package: $(TRV_LAYERS)
 stl/%.package:
