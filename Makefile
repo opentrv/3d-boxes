@@ -29,7 +29,7 @@ all: includes $(PACKAGES)
 # followed by a dependency line.
 
 V0_09_LAYERS=stl/box_layer-v0_09-0.stl stl/box_layer-v0_09-1.stl stl/box_layer-v0_09-2.stl stl/box_layer-v0_09-3.stl
-V0_2R1_LAYERS=stl/box_layer-v0_2r1-0.stl
+V0_2R1_LAYERS=stl/box_layer-v0_2r1-0.stl stl/box_layer-v0_2r1-1.stl stl/box_layer-v0_2r1-2.stl stl/box_layer-v0_2r1-3.stl
 DD1_LAYERS=stl/box_layer-dd1-0_1_2_merged.stl stl/box_layer-dd1-3.stl
 TRV_LAYERS=stl/m30-connector.stl stl/trv-connector.stl
 
