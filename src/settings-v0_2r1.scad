@@ -33,3 +33,43 @@ pcb_thickness = 1.7;
 usb_connector_side = LEFT;
 usb_connector_offset = 12;
 
+/* Wire holes */
+wire_hole_width = 6;
+wire_hole_power_side = TOP;
+wire_hole_power_offset = -8.75;
+wire_hole_boiler_side = BOTTOM;
+wire_hole_boiler_offset = 15.625;
+
+/* Secondary board spacers */
+2nd_board_spacer_height = 4;
+2nd_board_spacer_distance_x = 30.2025;
+2nd_board_spacer_distance_y = 9.6825;
+2nd_board_spacer_hole_height = 2nd_board_spacer_height + 1;
+2nd_board_spacer_hole_ratio = 0.7;
+
+/* Labels */
+label_learn_chars = ["L"];
+label_learn_char_count = 1;
+label_mode_chars = ["M"];
+label_mode_char_count = 1;
+label_opentrv_chars = ["O", "p", "e", "n", "T", "R", "V"];
+label_opentrv_char_count = 7;
+label_block_size = 0.5;
+
+nut_recess_radius = 6.25 / 2;
+nut_recess_height = 2.4;
+bolt_head_recess_height = 0.5;
+
+box_height = 30 + bolt_head_recess_height;
+
+/* Layer thicknesses */
+layer_0_0_thickness = box_layer_thickness;
+layer_0_1_thickness = 2 * box_layer_thickness;
+layer_0_2_thickness = pcb_thickness;
+layer_0_thickness = layer_0_0_thickness + layer_0_1_thickness + layer_0_2_thickness;
+layer_1_0_thickness = box_layer_thickness;
+layer_1_1_thickness = box_layer_thickness;
+layer_1_thickness = layer_1_0_thickness + layer_1_1_thickness;
+layer_3_thickness = box_layer_thickness;
+layer_2_thickness = box_height - layer_0_thickness - layer_1_thickness - layer_3_thickness;
+
