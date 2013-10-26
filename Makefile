@@ -20,23 +20,36 @@
 # To create a new package, add it to the list below first,
 # then add the dependencies for that package further down.
 
-PACKAGES=stl/box-v0_09.package stl/box-dd1.package stl/trv.package
+PACKAGES =stl/box-v0_09.package
 PACKAGES+=stl/box-v0_2r1.package
+PACKAGES+=stl/box-dd1.package
+PACKAGES+=stl/trv.package
 
 all: includes $(PACKAGES)
 
 # Dependencies for each package, in practice a list of STL files
 # followed by a dependency line.
 
-V0_09_LAYERS=stl/box_layer-v0_09-0.stl stl/box_layer-v0_09-1.stl stl/box_layer-v0_09-2.stl stl/box_layer-v0_09-3.stl
-V0_2R1_LAYERS=stl/box_layer-v0_2r1-0.stl stl/box_layer-v0_2r1-1.stl stl/box_layer-v0_2r1-2.stl stl/box_layer-v0_2r1-3.stl
-DD1_LAYERS=stl/box_layer-dd1-0_1_2_merged.stl stl/box_layer-dd1-3.stl
-TRV_LAYERS=stl/m30-connector.stl stl/trv-connector.stl
-
+V0_09_LAYERS =stl/box_layer-v0_09-0.stl
+V0_09_LAYERS+=stl/box_layer-v0_09-1.stl
+V0_09_LAYERS+=stl/box_layer-v0_09-2.stl
+V0_09_LAYERS+=stl/box_layer-v0_09-3.stl
 stl/box-v0_09.package: $(V0_09_LAYERS)
+
+V0_2R1_LAYERS =stl/box_layer-v0_2r1-0.stl
+V0_2R1_LAYERS+=stl/box_layer-v0_2r1-1.stl
+V0_2R1_LAYERS+=stl/box_layer-v0_2r1-2.stl
+V0_2R1_LAYERS+=stl/box_layer-v0_2r1-3.stl
 stl/box-v0_2r1.package: $(V0_2R1_LAYERS)
+
+DD1_LAYERS =stl/box_layer-dd1-0_1_2_merged.stl
+DD1_LAYERS+=stl/box_layer-dd1-3.stl
 stl/box-dd1.package: $(DD1_LAYERS)
+
+TRV_LAYERS =stl/m30-connector.stl
+TRV_LAYERS+=stl/trv-connector.stl
 stl/trv.package: $(TRV_LAYERS)
+
 stl/%.package:
 	rm -rf $@
 	mkdir -p $@
