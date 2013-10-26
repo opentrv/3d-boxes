@@ -28,7 +28,10 @@ mounting_hole_box_offset = box_wall_width + mounting_hole_pcb_offset;
 
 module box_mounting_hole(thickness=box_layer_thickness) {
     translate([0, 0, -0.1])
-    cylinder(r = pcb_mounting_hole_radius, h = thickness + 0.2);
+    cylinder(
+        r = pcb_mounting_hole_radius,
+        h = thickness + 0.2,
+        $fn=cylinder_resolution);
 }
 
 module box_mounting_holes(thickness=box_layer_thickness) {
@@ -60,8 +63,10 @@ module box_mounting_hole_surround(thickness=box_layer_thickness) {
     hull_cube_side = box_wall_width - box_corner_radius;
     surround_radius = pcb_mounting_hole_radius + pcb_mounting_hole_max_padding;
     hull() {
-        cylinder(r = surround_radius,
-            h = thickness);
+        cylinder(
+            r = surround_radius,
+            h = thickness,
+            $fn=cylinder_resolution);
         translate([mounting_hole_pcb_offset, -surround_radius, 0])
             cube(size = [hull_cube_side, hull_cube_side, thickness]);
         translate([-surround_radius, mounting_hole_pcb_offset, 0])
@@ -170,9 +175,15 @@ module box_spacer_layer(thickness=box_layer_thickness) {
 
 module box_wall_mount_screw_hole(thickness=box_layer_thickness) {
         translate([0, -pcb_width / 10, -0.1])
-            cylinder(r = pcb_mounting_hole_radius * 2, h = thickness + 0.2);
+            cylinder(
+                r = pcb_mounting_hole_radius * 2,
+                h = thickness + 0.2,
+                $fn=cylinder_resolution);
         translate([0,  pcb_width / 10, -0.1])
-            cylinder(r = pcb_mounting_hole_radius, h = thickness + 0.2);
+            cylinder(
+                r = pcb_mounting_hole_radius,
+                h = thickness + 0.2,
+                $fn=cylinder_resolution);
         translate([-pcb_mounting_hole_radius,  -pcb_width/10, -0.1])
             cube(size = [pcb_mounting_hole_radius * 2, pcb_width / 5, thickness + 0.2]);
 }
