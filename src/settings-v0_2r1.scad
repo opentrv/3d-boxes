@@ -43,7 +43,7 @@ wire_hole_boiler_offset = 15.625;
 /* Secondary board spacers */
 2nd_board_spacer_height = 4;
 2nd_board_spacer_distance_x = 30.2025;
-2nd_board_spacer_distance_y = 7.82;
+2nd_board_spacer_distance_y = 9.6825;
 2nd_board_spacer_hole_height = 2nd_board_spacer_height + 1;
 2nd_board_spacer_hole_ratio = 0.7;
 
