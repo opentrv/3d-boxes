@@ -90,12 +90,18 @@ module layer_0_2(thickness=layer_0_2_thickness) {
 }
 
 module layer_0() {
-    union() {
-        layer_0_0(layer_0_0_thickness);
-        translate([0, 0, layer_0_0_thickness - 0.1])
-            layer_0_1(layer_0_1_thickness + 0.1);
-        translate([0, 0, layer_0_0_thickness + layer_0_1_thickness - 0.1])
-            layer_0_2(layer_0_2_thickness + 0.1);
+    difference() {
+        union() {
+            layer_0_0(layer_0_0_thickness);
+            translate([0, 0, layer_0_0_thickness - 0.1])
+                layer_0_1(layer_0_1_thickness + 0.1);
+            translate([0, 0, layer_0_0_thickness + layer_0_1_thickness - 0.1])
+                layer_0_2(layer_0_2_thickness + 0.1);
+        }
+        for ( hoffset = [-10 : 5 : 10] ) {
+            ventilation_slit(TOP, layer_0_1_thickness, box_wall_width, hoffset, layer_0_0_thickness);
+            ventilation_slit(BOTTOM, layer_0_1_thickness, box_wall_width, hoffset, layer_0_0_thickness);
+        }
     }
 }
 

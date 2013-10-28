@@ -125,7 +125,7 @@ module pcb_hole(thickness=box_layer_thickness, padding=0) {
 module box_inside_tab(side, width, depth, offset, thickness=box_layer_thickness) {
     if(side == TOP) {
         translate([offset - width / 2, pcb_length / 2 - depth, 0])
-        cube(size = [width, depth, thickness]);
+        cube(size = [width, depth + 0.1, thickness]);
     }
     if(side == BOTTOM) {
         translate([offset - width / 2, -pcb_length / 2 - 0.1, 0])
@@ -210,6 +210,40 @@ module box_wall_mount_screw_holes(thickness=box_layer_thickness) {
             box_wall_mount_screw_hole(thickness);
         translate([ pcb_width * 3 / 10, 0, 0])
             box_wall_mount_screw_hole(thickness);
+    }
+}
+
+module ventilation_slit_core(layer_thickness, layer_wall_width) {
+    translate([0, 0, layer_thickness / 2])
+    union() {
+        cube(size = [1, layer_wall_width + 0.2, layer_thickness - 2], center = true);
+        translate([0, 0,  layer_wall_width - 1])
+        rotate(a = 90, v = [1, 0, 0])
+        cylinder(r = 0.5, h = layer_wall_width + 0.2, center = true);
+        translate([0, 0, -layer_wall_width + 1])
+        rotate(a = 90, v = [1, 0, 0])
+        cylinder(r = 0.5, h = layer_wall_width + 0.2, center = true);
+    }
+}
+
+module ventilation_slit(side, layer_thickness, layer_wall_width, hoffset, voffset=0) {
+    if(side == TOP) {
+        translate([hoffset,  pcb_length / 2 + layer_wall_width / 2, voffset])
+        ventilation_slit_core(layer_thickness, layer_wall_width);
+    }
+    if(side == BOTTOM) {
+        translate([hoffset, -pcb_length / 2 - layer_wall_width / 2, voffset])
+        ventilation_slit_core(layer_thickness, layer_wall_width);
+    }
+    if(side == LEFT) {
+        translate([-pcb_width / 2 - layer_wall_width / 2, hoffset, voffset])
+        rotate(a = 90, v = [0, 0, 1])
+        ventilation_slit_core(layer_thickness, layer_wall_width);
+    }
+    if(side == RIGHT) {
+        translate([ pcb_width / 2 + layer_wall_width / 2, hoffset, voffset])
+        rotate(a = 90, v = [0, 0, 1])
+        ventilation_slit_core(layer_thickness, layer_wall_width);
     }
 }
 
