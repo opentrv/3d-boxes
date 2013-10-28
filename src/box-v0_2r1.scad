@@ -120,6 +120,13 @@ module layer_1_1(thickness=box_layer_thickness) {
             wire_hole_boiler_offset,
             thickness
         );
+        box_outside_hole(
+            wire_hole_antenna_side,
+            wire_hole_antenna_width,
+            box_wall_width + 0.1,
+            wire_hole_antenna_offset,
+            thickness
+        );
     }
 }
 

@@ -39,6 +39,9 @@ wire_hole_power_side = TOP;
 wire_hole_power_offset = -8.75;
 wire_hole_boiler_side = BOTTOM;
 wire_hole_boiler_offset = 15.625;
+wire_hole_antenna_width = 3;
+wire_hole_antenna_side = TOP;
+wire_hole_antenna_offset = 18.125;
 
 /* Secondary board spacers */
 2nd_board_spacer_height = 4;
