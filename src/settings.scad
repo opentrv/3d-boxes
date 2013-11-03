@@ -32,7 +32,7 @@ box_corner_radius = 2;
 /* Small fudge factor to increase holes by in order to take into account
    cooling of the PLA
  */
-hole_fudge_factor = 0.1;
+hole_fudge_factor = 0.2;
 
 pcb_mounting_hole_radius = 1.5; /* Fits an M3 bolt */
 pcb_mounting_hole_max_padding = 1.5;
