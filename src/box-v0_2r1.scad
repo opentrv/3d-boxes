@@ -101,6 +101,10 @@ module layer_0() {
         for ( hoffset = [-10 : 5 : 10] ) {
             ventilation_slit(TOP, layer_0_1_thickness, box_wall_width, hoffset, layer_0_0_thickness);
             ventilation_slit(BOTTOM, layer_0_1_thickness, box_wall_width, hoffset, layer_0_0_thickness);
+            ventilation_slit(RIGHT, layer_0_1_thickness, box_wall_width, hoffset, layer_0_0_thickness);
+        }
+        for ( hoffset = [-10 : 5 :  0] ) {
+            ventilation_slit(LEFT, layer_0_1_thickness, box_wall_width, hoffset, layer_0_0_thickness);
         }
     }
 }
