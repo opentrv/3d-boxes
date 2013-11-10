@@ -61,9 +61,9 @@ label_block_size = 0.5;
 
 nut_recess_radius = 6.25 / 2;
 nut_recess_height = 2.4;
-bolt_head_recess_height = 0.5;
+bolt_head_recess_height = 1;
 
-box_height = 30 + bolt_head_recess_height;
+box_height = 30;
 
 /* Layer thicknesses */
 layer_0_0_thickness = box_layer_thickness;
