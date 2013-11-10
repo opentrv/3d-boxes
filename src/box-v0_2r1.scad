@@ -229,20 +229,29 @@ module layer_3() {
                         2nd_board_spacer_distance_y - corner_offset * 2,
                         layer_3_thickness + 0.2]);
                 /* Learn label */
-                translate([2nd_board_spacer_distance_x / 8, 2nd_board_spacer_distance_y / 1.5, layer_3_thickness * 2 / 3])
+                translate([
+                    2nd_board_spacer_distance_x / 8,
+                    2nd_board_spacer_distance_y / 1.5,
+                    layer_3_thickness - label_recess_depth + 0.5
+                    ])
                 rotate(a = -90, v = [0, 0, 1])
-                    8bit_str(label_learn_chars, label_learn_char_count, label_block_size, layer_3_thickness / 3 + 0.1);
+                    8bit_str(label_learn_chars, label_learn_char_count, label_block_size, label_recess_depth + 0.1);
                 /* Model label */
-                translate([-2nd_board_spacer_distance_x / 8, 2nd_board_spacer_distance_y / 1.5, layer_3_thickness * 2 / 3])
+                translate([
+                    -2nd_board_spacer_distance_x / 8,
+                    2nd_board_spacer_distance_y / 1.5,
+                    layer_3_thickness - label_recess_depth + 0.1
+                    ])
                 rotate(a = -90, v = [0, 0, 1])
-                    8bit_str(label_mode_chars, label_mode_char_count, label_block_size, layer_3_thickness / 3 + 0.1);
+                    8bit_str(label_mode_chars, label_mode_char_count, label_block_size, label_recess_depth + 0.1);
                 /* OpenTRV label */
                 translate([
                     -label_opentrv_char_count * 3.5 * label_block_size,
                     -pcb_length / 4,
-                    layer_3_thickness * 2 / 3])
+                    layer_3_thickness - label_recess_depth + 0.1
+                    ])
                 rotate(a = -90, v = [0, 0, 1])
-                    8bit_str(label_opentrv_chars, label_opentrv_char_count, label_block_size, layer_3_thickness / 3 + 0.1);
+                    8bit_str(label_opentrv_chars, label_opentrv_char_count, label_block_size, label_recess_depth + 0.1);
                 /* Recesses */
                 translate([0, 0, layer_3_thickness - bolt_head_recess_height])
                     nut_recesses(bolt_head_recess_height);

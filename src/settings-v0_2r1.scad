@@ -29,6 +29,20 @@ pcb_width = 50;
 pcb_length = 50;
 pcb_thickness = 1.7;
 
+/* Total box height */
+box_height = 30;
+
+/* Layer thicknesses */
+layer_0_0_thickness = box_layer_thickness;
+layer_0_1_thickness = 2 * box_layer_thickness;
+layer_0_2_thickness = pcb_thickness;
+layer_0_thickness = layer_0_0_thickness + layer_0_1_thickness + layer_0_2_thickness;
+layer_1_0_thickness = box_layer_thickness;
+layer_1_1_thickness = box_layer_thickness;
+layer_1_thickness = layer_1_0_thickness + layer_1_1_thickness;
+layer_3_thickness = box_layer_thickness;
+layer_2_thickness = box_height - layer_0_thickness - layer_1_thickness - layer_3_thickness;
+
 /* USB connector position */
 usb_connector_side = LEFT;
 usb_connector_offset = 12;
@@ -58,22 +72,11 @@ label_mode_chars = ["M"];
 label_mode_char_count = 1;
 label_opentrv_chars = ["O", "p", "e", "n", "T", "R", "V"];
 label_opentrv_char_count = 7;
-label_block_size = 0.5;
+label_block_size = 0.75;
+label_recess_depth = layer_3_thickness / 2;
 
+/* Nut and bolt recesses */
 nut_recess_radius = 6.25 / 2;
 nut_recess_height = 2.4;
 bolt_head_recess_height = 1;
-
-box_height = 30;
-
-/* Layer thicknesses */
-layer_0_0_thickness = box_layer_thickness;
-layer_0_1_thickness = 2 * box_layer_thickness;
-layer_0_2_thickness = pcb_thickness;
-layer_0_thickness = layer_0_0_thickness + layer_0_1_thickness + layer_0_2_thickness;
-layer_1_0_thickness = box_layer_thickness;
-layer_1_1_thickness = box_layer_thickness;
-layer_1_thickness = layer_1_0_thickness + layer_1_1_thickness;
-layer_3_thickness = box_layer_thickness;
-layer_2_thickness = box_height - layer_0_thickness - layer_1_thickness - layer_3_thickness;
 
