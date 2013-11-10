@@ -154,7 +154,7 @@ module layer_2() {
 
 module spacer() {
     cylinder(
-        r = pcb_mounting_hole_radius * 1.5,
+        r = 2nd_board_spacer_radius,
         h = 2nd_board_spacer_height + 0.1,
         $fn=cylinder_resolution);
 }
@@ -214,7 +214,7 @@ module spacer_holes() {
 }
 
 module layer_3() {
-    corner_offset = (pcb_mounting_hole_radius * 1.5) * sqrt(2) / 2;
+    corner_offset = 2nd_board_spacer_radius * sqrt(2) / 2;
     difference() {
         union() {
             difference() {
