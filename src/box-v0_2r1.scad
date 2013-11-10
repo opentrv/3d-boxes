@@ -118,14 +118,14 @@ module layer_1_1(thickness=box_layer_thickness) {
         box_spacer_layer(thickness);
         box_outside_hole(
             wire_hole_power_side,
-            wire_hole_width,
+            wire_hole_power_width,
             box_wall_width + 0.1,
             wire_hole_power_offset,
             thickness
         );
         box_outside_hole(
             wire_hole_boiler_side,
-            wire_hole_width,
+            wire_hole_boiler_width,
             box_wall_width + 0.1,
             wire_hole_boiler_offset,
             thickness

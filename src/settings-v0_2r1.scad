@@ -48,9 +48,10 @@ usb_connector_side = LEFT;
 usb_connector_offset = 12;
 
 /* Wire holes */
-wire_hole_width = 6;
+wire_hole_power_width = 18;
 wire_hole_power_side = TOP;
 wire_hole_power_offset = -8.75;
+wire_hole_boiler_width = 9;
 wire_hole_boiler_side = BOTTOM;
 wire_hole_boiler_offset = 15.625;
 wire_hole_antenna_width = 3;
