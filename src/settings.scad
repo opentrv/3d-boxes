@@ -35,7 +35,7 @@ box_corner_radius = 2;
 hole_fudge_factor = 0.2;
 
 pcb_mounting_hole_radius = 1.5; /* Fits an M3 bolt */
-pcb_mounting_hole_max_padding = 1.5;
+pcb_mounting_hole_max_padding = 1;
 pcb_mounting_hole_to_edge = 1;
 pcb_thickness = 2;
 
