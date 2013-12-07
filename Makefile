@@ -16,44 +16,13 @@
 
 # ---- Targets that control the list of packages and their content ----
 
-# Main target that uses a package list.
-# To create a new package, add it to the list below first,
-# then add the dependencies for that package further down.
+# Main target that uses a list of objects.
 
-PACKAGES =stl/box-v0_09.package
-PACKAGES+=stl/box-v0_2r1.package
-PACKAGES+=stl/box-dd1.package
-PACKAGES+=stl/trv.package
+OBJECTS =stl/box-v0_09.stl
+OBJECTS+=stl/box-v0_2r1.stl
+OBJECTS+=stl/box-dd1.stl
 
-all: includes $(PACKAGES)
-
-# Dependencies for each package, in practice a list of STL files
-# followed by a dependency line.
-
-V0_09_LAYERS =stl/box_layer-v0_09-0.stl
-V0_09_LAYERS+=stl/box_layer-v0_09-1.stl
-V0_09_LAYERS+=stl/box_layer-v0_09-2.stl
-V0_09_LAYERS+=stl/box_layer-v0_09-3.stl
-stl/box-v0_09.package: $(V0_09_LAYERS)
-
-V0_2R1_LAYERS =stl/box_layer-v0_2r1-0.stl
-V0_2R1_LAYERS+=stl/box_layer-v0_2r1-1.stl
-V0_2R1_LAYERS+=stl/box_layer-v0_2r1-2.stl
-V0_2R1_LAYERS+=stl/box_layer-v0_2r1-3.stl
-stl/box-v0_2r1.package: $(V0_2R1_LAYERS)
-
-DD1_LAYERS =stl/box_layer-dd1-0.stl
-DD1_LAYERS+=stl/box_layer-dd1-1.stl
-stl/box-dd1.package: $(DD1_LAYERS)
-
-TRV_LAYERS =stl/m30-connector.stl
-TRV_LAYERS+=stl/trv-connector.stl
-stl/trv.package: $(TRV_LAYERS)
-
-stl/%.package:
-	rm -rf $@
-	mkdir -p $@
-	cp $^ $@
+all: includes $(OBJECTS)
 
 # ---- Clean targets ----
 
@@ -75,10 +44,6 @@ include $(wildcard *.deps)
 stl/%.stl: src/%.scad
 	mkdir -p stl
 	openscad -m make -o $@ -d $@.deps $<
-
-# Auto-generation of box_layer-*.scad files
-src/box_layer-%.scad:
-	./generate-layer.sh $@
 
 # Includes and dependencies
 includes: deps
