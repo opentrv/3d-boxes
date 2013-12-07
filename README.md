@@ -24,16 +24,15 @@ This is the easy part, just run:
 
     make
 
-It will then create an `stl` directory that will contain one `.package`
-directory per box; each of those will contain a number of STL files for each
-component of the box.
+It will then create an `stl` directory that will contain one `.stl`
+file per box.
 
 Note that on the first run, you shold be connected to the internet as it will
 download dependencies needed for some of the boxes.
 
-You can also generate a single package if you know which one you want:
+You can also generate a single box if you know which one you want:
 
-    make stl/box-dd1.package
+    make stl/box-dd1.stl
 
 Cleaning up the build products
 ------------------------------
@@ -47,4 +46,12 @@ You can clean up build products in two ways:
 `make cleanall` will also delete the downloaded dependencies and will require
 you to be connected to the internet next time you run `make`. So if you are
 on the road far from a network connection, make sure you only run `make clean`.
+
+Customising the build
+---------------------
+
+Some parameters of the build can be customised to create a file for display or
+for printing, or to take into account imprecisions of some printers. The main
+custom options are in the `user-settings.scad` file and are explained in the
+file itself.
 
