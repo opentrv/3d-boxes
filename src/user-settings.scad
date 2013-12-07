@@ -23,15 +23,15 @@ their 3D printer.
 
 /*
 Specify how the different layers of the box should be laid out:
-- BOX_LAYOUT_FLAT is the default setting and used to lay out all layers on
-  a flat bed: this is the ideal option for printing.
+- BOX_LAYOUT_PRINT is the default setting and used to lay out all layers side
+  by side so that they can all be printed in one go.
 - BOX_LAYOUT_STACKED lays out the different layers one on top of each other
   with a small space in between: this is useful to show how the box is
   assembled.
 */
-BOX_LAYOUT_FLAT = 0;
+BOX_LAYOUT_PRINT = 0;
 BOX_LAYOUT_STACKED = 1;
-box_layout = BOX_LAYOUT_FLAT;
+box_layout = BOX_LAYOUT_PRINT;
 
 /*
 Specify the fudge ratio for the screw holes and the PCB hole. This is a value
