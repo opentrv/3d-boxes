@@ -30,11 +30,20 @@ box_layer_thickness = 3;
 box_corner_radius = 2;
 
 /* Small fudge factor to increase holes by in order to take into account
-   cooling of the PLA
+   cooling of the PLA. The actual value can be adjusted in user-settings.scad.
  */
 hole_fudge_factor = 0.3 * fudge_ratio;
 pcb_fudge_factor = 0.8 * fudge_ratio;
 
+/* Layut settings */
+box_layout_spacing = 10;
+
+/* Lilypad settings */
+lilypad_height = 0.3;
+lilypad_large_radius = box_layout_spacing;
+lilypad_small_radius = 5;
+
+/* Generic settings for different types of holes */
 pcb_mounting_hole_radius = 1.5; /* Fits an M3 bolt */
 pcb_mounting_hole_max_padding = 1;
 pcb_mounting_hole_to_edge = 1;

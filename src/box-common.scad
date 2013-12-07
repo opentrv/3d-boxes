@@ -25,7 +25,6 @@ box_total_length = pcb_length + 2 * box_wall_width;
 box_cube_length = box_total_length - 2 * box_corner_radius;
 mounting_hole_pcb_offset = pcb_mounting_hole_to_edge + pcb_mounting_hole_radius;
 mounting_hole_box_offset = box_wall_width + mounting_hole_pcb_offset;
-box_layout_spacing = 10;
 
 module box_mounting_hole(thickness=box_layer_thickness) {
     translate([0, 0, -0.1])

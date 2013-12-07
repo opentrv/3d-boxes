@@ -42,3 +42,9 @@ printers.
 */
 fudge_ratio = 0;
 
+/*
+Specify whether to use lilypads to prevent warping when printing.
+*/
+use_lilypads = true;
+
+
