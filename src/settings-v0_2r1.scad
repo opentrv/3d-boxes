@@ -16,6 +16,7 @@ under the Licence.
 Author(s) / Copyright (s): Bruno Girin 2013
 */
 
+include <user-settings.scad>;
 include <settings.scad>;
 
 /*

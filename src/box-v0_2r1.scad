@@ -264,14 +264,44 @@ module layer_3() {
     }
 }
 
-layer_0();
+if(box_layout == BOX_LAYOUT_STACKED) {
+    layer_0();
 
-translate([0, 0, 2 * layer_0_thickness])
+    translate([0, 0, layer_0_thickness + box_layout_spacing])
     layer_1();
 
-translate([0, 0, 2 * layer_0_thickness + 2 * layer_1_thickness])
+    translate([0, 0, layer_0_thickness + layer_1_thickness + 2 * box_layout_spacing])
     layer_2();
 
-translate([0, 0, 2 * layer_0_thickness + 2 * layer_1_thickness + 2 * layer_2_thickness])
+    translate([0, 0, layer_0_thickness + layer_1_thickness + layer_2_thickness + 3 * box_layout_spacing])
     layer_3();
+} else {
+    translate([
+        -(box_total_width + box_layout_spacing) / 2,
+        -(box_total_length + box_layout_spacing) / 2,
+        0])
+    layer_0();
+
+    translate([
+         (box_total_width + box_layout_spacing) / 2,
+        -(box_total_length + box_layout_spacing) / 2,
+        0])
+    layer_1();
+
+    translate([
+        -(box_total_width + box_layout_spacing) / 2,
+         (box_total_length + box_layout_spacing) / 2,
+        0])
+    layer_2();
+
+    translate([
+         (box_total_width + box_layout_spacing) / 2,
+         (box_total_length + box_layout_spacing) / 2,
+        layer_3_thickness])
+    rotate(a = 180, v = [1, 0, 0])
+    layer_3();
+}
+
+
+
 
