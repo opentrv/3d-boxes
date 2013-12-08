@@ -154,32 +154,46 @@ module layer_2() {
 
 module spacer() {
     cylinder(
-        r = 2nd_board_spacer_radius,
+        r1 = 2nd_board_spacer_radius,
+        r2 = 2nd_board_spacer_radius * 1.5,
         h = 2nd_board_spacer_height + 0.1,
         $fn=cylinder_resolution);
 }
 
 module spacers() {
-    translate([
-            -2nd_board_spacer_distance_x / 2,
-             2nd_board_spacer_distance_y / 2,
-             0])
-        spacer();
-    translate([
-             2nd_board_spacer_distance_x / 2,
-             2nd_board_spacer_distance_y / 2,
-             0])
-        spacer();
-    translate([
-            -2nd_board_spacer_distance_x / 2,
-            -2nd_board_spacer_distance_y / 2,
-             0])
-        spacer();
-    translate([
-             2nd_board_spacer_distance_x / 2,
-            -2nd_board_spacer_distance_y / 2,
-             0])
-        spacer();
+    corner_offset = 2nd_board_spacer_radius * sqrt(2) / 2;
+    difference() {
+        union() {
+            translate([
+                    -2nd_board_spacer_distance_x / 2,
+                     2nd_board_spacer_distance_y / 2,
+                     0])
+                spacer();
+            translate([
+                     2nd_board_spacer_distance_x / 2,
+                     2nd_board_spacer_distance_y / 2,
+                     0])
+                spacer();
+            translate([
+                    -2nd_board_spacer_distance_x / 2,
+                    -2nd_board_spacer_distance_y / 2,
+                     0])
+                spacer();
+            translate([
+                     2nd_board_spacer_distance_x / 2,
+                    -2nd_board_spacer_distance_y / 2,
+                     0])
+                spacer();
+        }
+        translate([
+                -2nd_board_spacer_distance_x / 2 + corner_offset,
+                -2nd_board_spacer_distance_y / 2 + corner_offset,
+                -0.1])
+            cube(size = [
+                2nd_board_spacer_distance_x - corner_offset * 2,
+                2nd_board_spacer_distance_y - corner_offset * 2,
+                2nd_board_spacer_height + 0.3]);
+    }
 }
 
 module spacer_hole() {
@@ -220,6 +234,7 @@ module layer_3() {
             difference() {
                 box_base(layer_3_thickness);
                 box_mounting_holes(layer_3_thickness);
+                /* Hole for buttons and LED */
                 translate([
                         -2nd_board_spacer_distance_x / 2 + corner_offset,
                         -2nd_board_spacer_distance_y / 2 + corner_offset,
