@@ -13,7 +13,7 @@ KIND, either express or implied. See the Licence for the
 specific language governing permissions and limitations
 under the Licence.
 
-Author(s) / Copyright (s): Bruno Girin 2013
+Author(s) / Copyright (s): Bo Herrmannsen, Bruno Girin 2013
 */
 
 include <user-settings.scad>;
@@ -52,21 +52,12 @@ wire_hole_boiler_width = 9;
 wire_hole_boiler_side = BOTTOM;
 wire_hole_boiler_offset = 15.625;
 
-//wire_hole_boiler_width = 9;
-//wire_hole_boiler_side = BOTTOM;
-//wire_hole_boiler_offset = 15.625;
-
-/* Secondary board spacers */
-2nd_board_spacer_height = 4;
-2nd_board_spacer_distance_x = 30.2025;
-2nd_board_spacer_distance_y = 9.6825;
-2nd_board_spacer_hole_height = 2nd_board_spacer_height + 1;
-2nd_board_spacer_hole_ratio = 0.7;
-2nd_board_spacer_radius = pcb_mounting_hole_radius * 2;
+/* Central hole */
+central_hole_radius = 1.5;
 
 /* Labels */
-label_s_chars = ["S", "S", "R"];
-label_s_char_count = 3;
+label_ssr_chars = ["S", "S", "R"];
+label_ssr_char_count = 3;
 label_opentrv_chars = ["O", "p", "e", "n", "T", "R", "V"];
 label_opentrv_char_count = 7;
 label_block_size = 0.75;

@@ -13,7 +13,7 @@ KIND, either express or implied. See the Licence for the
 specific language governing permissions and limitations
 under the Licence.
 
-Author(s) / Copyright (s): Bruno Girin 2013
+Author(s) / Copyright (s): Bo Herrmannsen, Bruno Girin 2013
 */
 
 include <settings-SSR.scad>;
@@ -128,76 +128,12 @@ module layer_1() {
 }
 
 module layer_2() {
-
-
-difference() {
-    box_spacer_layer(layer_2_thickness);
-
+    difference() {
+        box_spacer_layer(layer_2_thickness);
         translate ([5,5,5]) {
-        rotate ([90,0,0]) cylinder (h = 60, r=5, $fn=cylinder_resolution);
-}
-}
-}
-
-module spacer() {
-    cylinder(
-        r = 2nd_board_spacer_radius,
-        h = 2nd_board_spacer_height + 0.1,
-        $fn=cylinder_resolution);
-}
-
-module spacers() {
-    translate([
-            -2nd_board_spacer_distance_x / 2,
-             2nd_board_spacer_distance_y / 2,
-             0])
-        spacer();
-    translate([
-             2nd_board_spacer_distance_x / 2,
-             2nd_board_spacer_distance_y / 2,
-             0])
-        spacer();
-    translate([
-            -2nd_board_spacer_distance_x / 2,
-            -2nd_board_spacer_distance_y / 2,
-             0])
-        spacer();
-    translate([
-             2nd_board_spacer_distance_x / 2,
-            -2nd_board_spacer_distance_y / 2,
-             0])
-        spacer();
-}
-
-module spacer_hole() {
-    translate([0, 0, -0.1])
-        cylinder(
-            r = pcb_mounting_hole_radius * 2nd_board_spacer_hole_ratio,
-            h = 2nd_board_spacer_hole_height + 0.1,
-            $fn=cylinder_resolution);
-}
-
-module spacer_holes() {
-    translate([
-            -2nd_board_spacer_distance_x / 2,
-             2nd_board_spacer_distance_y / 2,
-             0])
-        spacer_hole();
-    translate([
-             2nd_board_spacer_distance_x / 2,
-             2nd_board_spacer_distance_y / 2,
-             0])
-        spacer_hole();
-    translate([
-            -2nd_board_spacer_distance_x / 2,
-            -2nd_board_spacer_distance_y / 2,
-             0])
-        spacer_hole();
-    translate([
-             2nd_board_spacer_distance_x / 2,
-            -2nd_board_spacer_distance_y / 2,
-             0])
-        spacer_hole();
+            rotate ([90,0,0]) cylinder (h = 60, r=5, $fn=cylinder_resolution);
+        }
+    }
 }
 
 module layer_3() {
@@ -209,12 +145,12 @@ module layer_3() {
                 
                 /* SSR label */
                 translate([
-                    -label_s_char_count * 3 * label_block_size,
-                    2nd_board_spacer_distance_y / 1.5,
+                    -label_ssr_char_count * 3 * label_block_size,
+                    central_hole_radius * 5,
                     layer_3_thickness - label_recess_depth + 0.1
                     ])
                 rotate(a = -90, v = [0, 0, 1])
-                    8bit_str(label_s_chars, label_s_char_count, label_block_size, label_recess_depth + 0.1);
+                    8bit_str(label_ssr_chars, label_ssr_char_count, label_block_size, label_recess_depth + 0.1);
                 /* OpenTRV label */
                 translate([
                     -label_opentrv_char_count * 3.5 * label_block_size,
@@ -229,7 +165,7 @@ module layer_3() {
 
                 /* Central hole */
                 translate([0, 0, -0.1])
-                cylinder (h = layer_3_thickness + 0.2, r=1.5, $fn=cylinder_resolution);
+                cylinder (h = layer_3_thickness + 0.2, r=central_hole_radius, $fn=cylinder_resolution);
             }
         }
         
