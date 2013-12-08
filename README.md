@@ -77,6 +77,6 @@ Customising the model
 
 Some parameters of each model can be customised to create a file for display or
 for printing, or to take into account imprecisions of some printers. The main
-custom options are in the `user-settings.scad` file and are explained in the
-file itself.
+custom options are in the [user-settings.scad](src/main/user-settings.scad)
+file and are explained in the file itself.
 
