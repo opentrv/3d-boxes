@@ -75,7 +75,7 @@ module layer_0_1(thickness=layer_0_1_thickness) {
 module layer_0_2(thickness=layer_0_2_thickness) {
     difference() {
         box_base(thickness);
-        pcb_hole(thickness, hole_fudge_factor);
+        pcb_hole(thickness, pcb_fudge_factor);
         
     }
 }
