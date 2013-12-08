@@ -22,7 +22,7 @@ RIGHT  = 1;
 BOTTOM = 2;
 LEFT   = 3;
 
-cylinder_resolution = 180;
+cylinder_resolution = 90;
 
 /* Settings for the box itself */
 box_wall_width = 3;

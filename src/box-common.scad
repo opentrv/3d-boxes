@@ -215,15 +215,7 @@ module box_wall_mount_screw_holes(thickness=box_layer_thickness) {
 
 module ventilation_slit_core(layer_thickness, layer_wall_width) {
     translate([0, 0, layer_thickness / 2])
-    union() {
-        cube(size = [1, layer_wall_width + 0.2, layer_thickness - 2], center = true);
-        translate([0, 0,  layer_wall_width - 1])
-        rotate(a = 90, v = [1, 0, 0])
-        cylinder(r = 0.5, h = layer_wall_width + 0.2, center = true);
-        translate([0, 0, -layer_wall_width + 1])
-        rotate(a = 90, v = [1, 0, 0])
-        cylinder(r = 0.5, h = layer_wall_width + 0.2, center = true);
-    }
+    cube(size = [1, layer_wall_width + 0.2, layer_thickness - 1], center = true);
 }
 
 module ventilation_slit(side, layer_thickness, layer_wall_width, hoffset, voffset=0) {
