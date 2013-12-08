@@ -39,7 +39,7 @@ between 0 and 1 with 0 meaning no fudge and 1 meaning maximum fudge.
 A value of 0 would typically be used when printing with a high quality printer
 while a value of 1 ensures more tolerance around holes.
 */
-fudge_ratio = 0;
+fudge_ratio = 1;
 
 /*
 Specify whether to use lilypads to prevent warping when printing.
