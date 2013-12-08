@@ -20,51 +20,23 @@ include <settings-v0_2r1.scad>;
 include <box-common.scad>;
 include <bitmap.scad>;
 
-module nut_recess(height) {
-    cylinder(
-        r = nut_recess_radius,
-        h = height + 0.1,
-        $fn=cylinder_resolution);
-}
-
-module nut_recesses(height) {
-    union() {
-        translate([
-            -pcb_width / 2 + mounting_hole_pcb_offset,
-            -pcb_length / 2 + mounting_hole_pcb_offset,
-            0])
-        nut_recess(height);
-        translate([
-            +pcb_width / 2 - mounting_hole_pcb_offset,
-            -pcb_length / 2 + mounting_hole_pcb_offset,
-            0])
-        nut_recess(height);
-        translate([
-            +pcb_width / 2 - mounting_hole_pcb_offset,
-            +pcb_length / 2 - mounting_hole_pcb_offset,
-            0])
-        nut_recess(height);
-        translate([
-            -pcb_width / 2 + mounting_hole_pcb_offset,
-            +pcb_length / 2 - mounting_hole_pcb_offset,
-            0])
-        nut_recess(height);
-    }
-}
-
 module layer_0_0(thickness=layer_0_0_thickness) {
-    difference() {
-        box_base(thickness);
-        box_mounting_holes(thickness);
-        box_wall_mount_screw_holes(thickness);
-        translate([0, 0, -0.1])
-            nut_recesses(nut_recess_height);
+    union() {
+        difference() {
+            box_base(thickness);
+            box_mounting_holes(thickness);
+            box_wall_mount_screw_holes(thickness);
+            translate([0, 0, -0.1])
+                nut_recesses(nut_recess_height + cylinder_bridge_height);
+        }
+        translate([0, 0, nut_recess_height])
+            cylinder_bridges(pcb_mounting_hole_radius + hole_fudge_factor, nut_recess_radius);
     }
 }
 
 module layer_0_1(thickness=layer_0_1_thickness) {
     difference() {
-        box_spacer_layer(thickness);
+        box_spacer_layer(thickness, thickness / 2, 1.2);
         box_outside_hole(
             usb_connector_side,
             usb_cable_width,
@@ -268,11 +240,14 @@ module layer_3() {
                 rotate(a = -90, v = [0, 0, 1])
                     8bit_str(label_opentrv_chars, label_opentrv_char_count, label_block_size, label_recess_depth + 0.1);
                 /* Recesses */
-                translate([0, 0, layer_3_thickness - bolt_head_recess_height])
-                    nut_recesses(bolt_head_recess_height);
+                translate([0, 0, layer_3_thickness - bolt_head_recess_height - cylinder_bridge_height])
+                    nut_recesses(bolt_head_recess_height + cylinder_bridge_height);
             }
             translate([0, 0, -2nd_board_spacer_height])
                 spacers();
+            translate([0, 0, layer_3_thickness - bolt_head_recess_height])
+            rotate(v=[1, 0, 0], a=180)
+                cylinder_bridges(pcb_mounting_hole_radius + hole_fudge_factor, nut_recess_radius);
         }
         translate([0, 0, -2nd_board_spacer_height])
             spacer_holes();

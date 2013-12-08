@@ -79,6 +79,6 @@ label_recess_depth = layer_3_thickness / 2;
 
 /* Nut and bolt recesses */
 nut_recess_radius = 6.25 / 2;
-nut_recess_height = 2.4;
+nut_recess_height = 2;
 bolt_head_recess_height = 1;
 

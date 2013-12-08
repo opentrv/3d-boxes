@@ -43,6 +43,10 @@ lilypad_height = 0.3;
 lilypad_large_radius = box_layout_spacing;
 lilypad_small_radius = 5;
 
+/* Cylinder bridge settings */
+cylinder_bridge_layer_height = 0.3;
+cylinder_bridge_height = cylinder_bridge_layer_height * 3;
+
 /* Generic settings for different types of holes */
 pcb_mounting_hole_radius = 1.5; /* Fits an M3 bolt */
 pcb_mounting_hole_max_padding = 1;
