@@ -14,27 +14,53 @@
 #  
 #  Author(s) / Copyright (s): Bruno Girin 2013
 
-# ---- Targets that control the list of packages and their content ----
+# --------------------------------
+# ---- Primary build targets -----
+# --------------------------------
 
-# Main target that uses a list of objects.
+#
+# Default target that creates STL files for all objects in
+# the repository, including main and playpen areas.
+#
+all: main playpen
 
-OBJECTS =stl/box-v0_09.stl
-OBJECTS+=stl/box-v0_2r1.stl
-OBJECTS+=stl/box-dd1.stl
+#
+# Main boxes. The objects in this list have been printed by a
+# number of different people and have been confirmed to be fit
+# for purpose.
+#
+MAIN_OBJECTS =stl/main/box-v0_2r1.stl
 
-all: includes $(OBJECTS)
+main: $(MAIN_OBJECTS)
 
+#
+# Playpen boxes. The objects in this list are early iterations
+# of various boxes or parts thereof. They will be migrated to
+# the main area once they have been printed by several people
+# and have been confirmed fit for purpose.
+#
+PLAYPEN_OBJECTS =stl/playpen/box-SSR.stl
+PLAYPEN_OBJECTS+=stl/playpen/box-v0_09.stl
+PLAYPEN_OBJECTS+=stl/playpen/box-dd1.stl
+PLAYPEN_OBJECTS+=stl/playpen/m30-connector.stl
+PLAYPEN_OBJECTS+=stl/playpen/trv-connector.stl
+
+playpen: includes $(PLAYPEN_OBJECTS)
+
+# -----------------------
 # ---- Clean targets ----
+# -----------------------
 
 clean:
 	rm -rf src/include
 	rm -rf stl
-	rm -f src/box_layer-*.scad
 
 cleanall: clean
 	rm -rf deps
 
+# --------------------------
 # ---- Internal targets ----
+# --------------------------
 
 # STL file target
 
@@ -42,7 +68,8 @@ cleanall: clean
 include $(wildcard *.deps)
 
 stl/%.stl: src/%.scad
-	mkdir -p stl
+	mkdir -p stl/main
+	mkdir -p stl/playpen
 	openscad -m make -o $@ -d $@.deps $<
 
 # Includes and dependencies
