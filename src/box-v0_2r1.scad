@@ -364,6 +364,3 @@ if(box_layout == BOX_LAYOUT_STACKED) {
     }
 }
 
-
-
-
