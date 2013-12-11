@@ -208,8 +208,8 @@ module layer_3() {
                 box_mounting_holes(layer_3_thickness);
                 /* Hole for buttons and LED */
                 translate([
-                        -2nd_board_spacer_distance_x / 2 + corner_offset,
-                        -2nd_board_spacer_distance_y / 2 + corner_offset,
+                        -2nd_board_spacer_distance_x / 2 + corner_offset + 2nd_board_offset_x,
+                        -2nd_board_spacer_distance_y / 2 + corner_offset + 2nd_board_offset_y,
                         -0.1])
                     cube(size = [
                         2nd_board_spacer_distance_x - corner_offset * 2,
@@ -217,16 +217,16 @@ module layer_3() {
                         layer_3_thickness + 0.2]);
                 /* Learn label */
                 translate([
-                    2nd_board_spacer_distance_x / 8,
-                    2nd_board_spacer_distance_y / 1.5,
+                    2nd_board_spacer_distance_x / 8 + 2nd_board_offset_x,
+                    2nd_board_spacer_distance_y / 1.5 + 2nd_board_offset_y,
                     layer_3_thickness - label_recess_depth + 0.5
                     ])
                 rotate(a = -90, v = [0, 0, 1])
                     8bit_str(label_learn_chars, label_learn_char_count, label_block_size, label_recess_depth + 0.1);
                 /* Model label */
                 translate([
-                    -2nd_board_spacer_distance_x / 8,
-                    2nd_board_spacer_distance_y / 1.5,
+                    -2nd_board_spacer_distance_x / 8 + 2nd_board_offset_x,
+                    2nd_board_spacer_distance_y / 1.5 + 2nd_board_offset_y,
                     layer_3_thickness - label_recess_depth + 0.1
                     ])
                 rotate(a = -90, v = [0, 0, 1])
@@ -243,13 +243,13 @@ module layer_3() {
                 translate([0, 0, layer_3_thickness - bolt_head_recess_height - cylinder_bridge_height])
                     nut_recesses(bolt_head_recess_height + cylinder_bridge_height);
             }
-            translate([0, 0, -2nd_board_spacer_height])
+            translate([2nd_board_offset_x, 2nd_board_offset_y, -2nd_board_spacer_height])
                 spacers();
             translate([0, 0, layer_3_thickness - bolt_head_recess_height])
             rotate(v=[1, 0, 0], a=180)
                 cylinder_bridges(pcb_mounting_hole_radius + hole_fudge_factor, nut_recess_radius);
         }
-        translate([0, 0, -2nd_board_spacer_height])
+        translate([2nd_board_offset_x, 2nd_board_offset_y, -2nd_board_spacer_height])
             spacer_holes();
     }
 }

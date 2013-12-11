@@ -66,6 +66,8 @@ wire_hole_antenna_offset = 18.125;
 2nd_board_spacer_hole_height = 2nd_board_spacer_height + 1;
 2nd_board_spacer_hole_ratio = 0.7;
 2nd_board_spacer_radius = pcb_mounting_hole_radius * 2;
+2nd_board_offset_x = 5;
+2nd_board_offset_y = 10;
 
 /* Labels */
 label_learn_chars = ["L"];
