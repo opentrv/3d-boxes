@@ -193,7 +193,7 @@ module spacers() {
 module spacer_hole() {
     translate([0, 0, -0.1])
         cylinder(
-            r = pcb_mounting_hole_radius * 2nd_board_spacer_hole_ratio,
+            r = 2nd_board_spacer_hole_radius,
             h = 2nd_board_spacer_hole_height + 0.1,
             $fn=cylinder_resolution);
 }
