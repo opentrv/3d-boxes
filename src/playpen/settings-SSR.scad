@@ -55,8 +55,8 @@ wire_hole_mains_radius = 4;
 wire_hole_mains_offset_x = -12.5;
 wire_hole_mains_offset_z = 5;
 
-/* LED hole */
-led_hole_radius = 1.5;
+/* LED hole to fit C-175 LED clip */
+led_hole_radius = 3.5;
 
 /* Labels */
 label_ssr_chars = ["S", "S", "R"];

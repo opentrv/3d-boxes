@@ -130,7 +130,10 @@ module layer_1() {
 
                 /* LED hole */
                 translate([0, 0, -0.1])
-                cylinder (h = layer_1_thickness + 0.2, r=led_hole_radius, $fn=cylinder_resolution);
+                cylinder (
+                    h = layer_1_thickness + 0.2,
+                    r = led_hole_radius + hole_fudge_factor,
+                    $fn = cylinder_resolution);
             }
         }
         
