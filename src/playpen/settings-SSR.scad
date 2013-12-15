@@ -27,7 +27,7 @@ is facing the right way up.
 */
 /* The basic measurements of the PCB */
 pcb_width = 50;
-pcb_length = 50;
+pcb_length = 100;
 pcb_thickness = 1.7;
 
 /* Total box height */
@@ -37,23 +37,26 @@ box_height = 30;
 layer_0_0_thickness = box_layer_thickness;
 layer_0_1_thickness = 2 * box_layer_thickness;
 layer_0_2_thickness = pcb_thickness;
-layer_0_thickness = layer_0_0_thickness + layer_0_1_thickness + layer_0_2_thickness;
-layer_1_0_thickness = box_layer_thickness;
-layer_1_1_thickness = box_layer_thickness;
-layer_1_thickness = layer_1_0_thickness + layer_1_1_thickness;
-layer_3_thickness = box_layer_thickness;
-layer_2_thickness = box_height - layer_0_thickness - layer_1_thickness - layer_3_thickness;
+layer_0_3_thickness = box_layer_thickness;
+layer_0_4_thickness = box_layer_thickness;
+layer_0_thickness_base = layer_0_0_thickness + layer_0_1_thickness + layer_0_2_thickness + layer_0_3_thickness + layer_0_4_thickness;
+layer_1_thickness = box_layer_thickness;
+layer_0_5_thickness = box_height - layer_0_thickness_base - layer_1_thickness;
+layer_0_thickness = layer_0_thickness_base + layer_0_5_thickness;
 
 
 
 /* Wire holes */
+wire_hole_controller_width = 9;
+wire_hole_controller_side = TOP;
+wire_hole_controller_offset = 15.625;
 
-wire_hole_boiler_width = 9;
-wire_hole_boiler_side = BOTTOM;
-wire_hole_boiler_offset = 15.625;
+wire_hole_mains_radius = 3;
+wire_hole_mains_offset_x = -12.5;
+wire_hole_mains_offset_z = 0.5;
 
-/* Central hole */
-central_hole_radius = 1.5;
+/* LED hole */
+led_hole_radius = 1.5;
 
 /* Labels */
 label_ssr_chars = ["S", "S", "R"];
@@ -61,7 +64,7 @@ label_ssr_char_count = 3;
 label_opentrv_chars = ["O", "p", "e", "n", "T", "R", "V"];
 label_opentrv_char_count = 7;
 label_block_size = 0.75;
-label_recess_depth = layer_3_thickness / 2;
+label_recess_depth = layer_1_thickness / 2;
 
 /* Nut and bolt recesses */
 nut_recess_radius = 6.25 / 2;
