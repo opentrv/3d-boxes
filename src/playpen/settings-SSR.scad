@@ -51,9 +51,9 @@ wire_hole_controller_width = 9;
 wire_hole_controller_side = TOP;
 wire_hole_controller_offset = 15.625;
 
-wire_hole_mains_radius = 3;
+wire_hole_mains_radius = 4;
 wire_hole_mains_offset_x = -12.5;
-wire_hole_mains_offset_z = 0.5;
+wire_hole_mains_offset_z = 5;
 
 /* LED hole */
 led_hole_radius = 1.5;

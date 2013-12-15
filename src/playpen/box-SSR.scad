@@ -111,7 +111,7 @@ module layer_1() {
                 /* SSR label */
                 translate([
                     -label_ssr_char_count * 3 * label_block_size,
-                    central_hole_radius * 5,
+                    led_hole_radius * 5,
                     layer_1_thickness - label_recess_depth + 0.1
                     ])
                 rotate(a = -90, v = [0, 0, 1])
