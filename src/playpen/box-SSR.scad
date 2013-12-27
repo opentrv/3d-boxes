@@ -25,7 +25,8 @@ module layer_0_0(thickness=layer_0_0_thickness) {
     difference() {
         box_base(thickness);
         box_mounting_holes(thickness);
-        box_wall_mount_screw_holes(thickness);
+        translate([0, box_total_length / 4, 0])
+            box_wall_mount_screw_holes(thickness);
         translate([0, 0, -0.1])
             nut_recesses(nut_recess_height);
     }
@@ -82,10 +83,10 @@ module layer_0() {
                 layer_0_5(layer_0_5_thickness + 0.1);
         }
         for ( hoffset = [-10 : 5 : 10] ) {
-            ventilation_slit(TOP, layer_0_5_thickness - 4, box_wall_width, hoffset, layer_0_thickness_base + 2);
-            ventilation_slit(BOTTOM, layer_0_5_thickness - 4, box_wall_width, hoffset, layer_0_thickness_base + 2);
-            ventilation_slit(RIGHT, layer_0_5_thickness - 4, box_wall_width, hoffset, layer_0_thickness_base + 2);
-            ventilation_slit(LEFT, layer_0_5_thickness - 4, box_wall_width, hoffset, layer_0_thickness_base + 2);
+            ventilation_slit(TOP, 2, layer_0_5_thickness - 4, box_wall_width, hoffset, layer_0_thickness_base + 2);
+            ventilation_slit(BOTTOM, 2, layer_0_5_thickness - 4, box_wall_width, hoffset, layer_0_thickness_base + 2);
+            ventilation_slit(RIGHT, 2, layer_0_5_thickness - 4, box_wall_width, hoffset, layer_0_thickness_base + 2);
+            ventilation_slit(LEFT, 2, layer_0_5_thickness - 4, box_wall_width, hoffset, layer_0_thickness_base + 2);
         }
         translate ([
                 wire_hole_mains_offset_x,

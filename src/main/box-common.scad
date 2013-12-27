@@ -223,29 +223,29 @@ module box_wall_mount_screw_holes(thickness=box_layer_thickness) {
 }
 
 /* Ventilaton slit elements */
-module ventilation_slit_core(layer_thickness, layer_wall_width) {
+module ventilation_slit_core(width, layer_thickness, layer_wall_width) {
     translate([0, 0, layer_thickness / 2])
-    cube(size = [1, layer_wall_width + 0.2, layer_thickness - 1], center = true);
+    cube(size = [width, layer_wall_width + 0.2, layer_thickness - 1], center = true);
 }
 
-module ventilation_slit(side, layer_thickness, layer_wall_width, hoffset, voffset=0) {
+module ventilation_slit(side, width, layer_thickness, layer_wall_width, hoffset, voffset=0) {
     if(side == TOP) {
         translate([hoffset,  pcb_length / 2 + layer_wall_width / 2, voffset])
-        ventilation_slit_core(layer_thickness, layer_wall_width);
+        ventilation_slit_core(width, layer_thickness, layer_wall_width);
     }
     if(side == BOTTOM) {
         translate([hoffset, -pcb_length / 2 - layer_wall_width / 2, voffset])
-        ventilation_slit_core(layer_thickness, layer_wall_width);
+        ventilation_slit_core(width, layer_thickness, layer_wall_width);
     }
     if(side == LEFT) {
         translate([-pcb_width / 2 - layer_wall_width / 2, hoffset, voffset])
         rotate(a = 90, v = [0, 0, 1])
-        ventilation_slit_core(layer_thickness, layer_wall_width);
+        ventilation_slit_core(width, layer_thickness, layer_wall_width);
     }
     if(side == RIGHT) {
         translate([ pcb_width / 2 + layer_wall_width / 2, hoffset, voffset])
         rotate(a = 90, v = [0, 0, 1])
-        ventilation_slit_core(layer_thickness, layer_wall_width);
+        ventilation_slit_core(width, layer_thickness, layer_wall_width);
     }
 }
 

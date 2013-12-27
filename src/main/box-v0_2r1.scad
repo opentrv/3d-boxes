@@ -70,13 +70,13 @@ module layer_0() {
             translate([0, 0, layer_0_0_thickness + layer_0_1_thickness - 0.1])
                 layer_0_2(layer_0_2_thickness + 0.1);
         }
-        for ( hoffset = [-10 : 5 : 10] ) {
-            ventilation_slit(TOP, layer_0_1_thickness, box_wall_width, hoffset, layer_0_0_thickness);
-            ventilation_slit(BOTTOM, layer_0_1_thickness, box_wall_width, hoffset, layer_0_0_thickness);
-            ventilation_slit(RIGHT, layer_0_1_thickness, box_wall_width, hoffset, layer_0_0_thickness);
+        for ( hoffset = [-12 : 4 : 12] ) {
+            ventilation_slit(TOP, 2, layer_0_1_thickness, box_wall_width, hoffset, layer_0_0_thickness);
+            ventilation_slit(BOTTOM, 2, layer_0_1_thickness, box_wall_width, hoffset, layer_0_0_thickness);
+            ventilation_slit(RIGHT, 2, layer_0_1_thickness, box_wall_width, hoffset, layer_0_0_thickness);
         }
-        for ( hoffset = [-10 : 5 :  0] ) {
-            ventilation_slit(LEFT, layer_0_1_thickness, box_wall_width, hoffset, layer_0_0_thickness);
+        for ( hoffset = [-12 : 4 :  0] ) {
+            ventilation_slit(LEFT, 2, layer_0_1_thickness, box_wall_width, hoffset, layer_0_0_thickness);
         }
     }
 }
