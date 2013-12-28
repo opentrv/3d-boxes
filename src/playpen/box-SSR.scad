@@ -32,39 +32,24 @@ module layer_0_0(thickness=layer_0_0_thickness) {
     }
 }
 
-module layer_0_1(thickness=layer_0_1_thickness) {
-    difference() {
-        box_spacer_layer(thickness);
-    }
-}
-
-module layer_0_2(thickness=layer_0_2_thickness) {
-    difference() {
-        box_spacer_layer(thickness);
-    }
-}
-
-module layer_0_3(thickness=box_layer_thickness) {
+module layer_0_5(thickness=box_layer_thickness) {
     box_spacer_layer(thickness);
 }
 
-module layer_0_4(thickness=box_layer_thickness) {
+module layer_0_1b(thickness=layer_0_1b_thickness, hole_offset_z, hole_thickness) {
     difference() {
         box_spacer_layer(thickness);
         
+        translate([0, 0, hole_offset_z])
         box_outside_hole(
             wire_hole_controller_side,
             wire_hole_controller_width,
             box_wall_width + 0.1,
             wire_hole_controller_offset,
-            thickness
+            hole_thickness
         );
         
     }
-}
-
-module layer_0_5(thickness=box_layer_thickness) {
-    box_spacer_layer(layer_0_5_thickness);
 }
 
 module layer_0() {
@@ -72,21 +57,13 @@ module layer_0() {
         union() {
             layer_0_0(layer_0_0_thickness);
             translate([0, 0, layer_0_0_thickness - 0.1])
-                layer_0_1(layer_0_1_thickness + 0.1);
-            translate([0, 0, layer_0_0_thickness + layer_0_1_thickness - 0.1])
-                layer_0_2(layer_0_2_thickness + 0.1);
-            translate([0, 0, layer_0_0_thickness + layer_0_1_thickness + layer_0_2_thickness - 0.1])
-                layer_0_3(layer_0_3_thickness + 0.1);
-            translate([0, 0, layer_0_0_thickness + layer_0_1_thickness + layer_0_2_thickness + layer_0_3_thickness - 0.1])
-                layer_0_4(layer_0_4_thickness + 0.1);
-            translate([0, 0, layer_0_0_thickness + layer_0_1_thickness + layer_0_2_thickness + layer_0_3_thickness + layer_0_4_thickness - 0.1])
-                layer_0_5(layer_0_5_thickness + 0.1);
+                layer_0_1b(layer_0_1b_thickness, layer_0_1b_hole_offset_z, layer_0_1b_hole_thickness);
         }
         for ( hoffset = [-10 : 5 : 10] ) {
-            ventilation_slit(TOP, 2, layer_0_5_thickness - 4, box_wall_width, hoffset, layer_0_thickness_base + 2);
-            ventilation_slit(BOTTOM, 2, layer_0_5_thickness - 4, box_wall_width, hoffset, layer_0_thickness_base + 2);
-            ventilation_slit(RIGHT, 2, layer_0_5_thickness - 4, box_wall_width, hoffset, layer_0_thickness_base + 2);
-            ventilation_slit(LEFT, 2, layer_0_5_thickness - 4, box_wall_width, hoffset, layer_0_thickness_base + 2);
+            ventilation_slit(TOP, 2, slit_thickness - 4, box_wall_width, hoffset, slit_offset_z + 2);
+            ventilation_slit(BOTTOM, 2, slit_thickness - 4, box_wall_width, hoffset, slit_offset_z + 2);
+            ventilation_slit(RIGHT, 2, slit_thickness - 4, box_wall_width, hoffset, slit_offset_z + 2);
+            ventilation_slit(LEFT, 2, slit_thickness - 4, box_wall_width, hoffset, slit_offset_z + 2);
         }
         translate ([
                 wire_hole_mains_offset_x,

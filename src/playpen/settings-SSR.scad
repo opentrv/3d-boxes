@@ -35,15 +35,16 @@ box_height = 30;
 
 /* Layer thicknesses */
 layer_0_0_thickness = box_layer_thickness;
-layer_0_1_thickness = 2 * box_layer_thickness;
-layer_0_2_thickness = pcb_thickness;
-layer_0_3_thickness = box_layer_thickness;
-layer_0_4_thickness = box_layer_thickness;
-layer_0_thickness_base = layer_0_0_thickness + layer_0_1_thickness + layer_0_2_thickness + layer_0_3_thickness + layer_0_4_thickness;
 layer_1_thickness = box_layer_thickness;
-layer_0_5_thickness = box_height - layer_0_thickness_base - layer_1_thickness;
-layer_0_thickness = layer_0_thickness_base + layer_0_5_thickness;
 
+layer_0_1b_thickness = box_height - layer_0_0_thickness - layer_1_thickness;
+layer_0_thickness = layer_0_0_thickness + layer_0_1b_thickness;
+
+layer_0_1b_hole_offset_z = 2 * box_layer_thickness + pcb_thickness;
+layer_0_1b_hole_thickness = box_layer_thickness;
+
+slit_offset_z = 5 * box_layer_thickness + pcb_thickness;
+slit_thickness = layer_0_1b_thickness - slit_offset_z + layer_0_0_thickness;
 
 
 /* Wire holes */
