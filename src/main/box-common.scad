@@ -249,6 +249,35 @@ module ventilation_slit(side, width, layer_thickness, layer_wall_width, hoffset,
     }
 }
 
+/* Ventilation back plate element, only used in stuations where we want to
+   protect the inside of the box from any intrusion by foreign objects via
+   the ventilation slits. */
+module ventilation_screen_core(width, thickness, layer_thickness) {
+    translate([0, 0, layer_thickness / 2])
+    cube(size = [width, thickness, layer_thickness], center = true);
+}
+
+module ventilation_screen(side, width, thickness, layer_thickness, hoffset, voffset=0) {
+    if(side == TOP) {
+        translate([hoffset,  pcb_length / 2 - 3, voffset])
+        ventilation_screen_core(width, thickness, layer_thickness);
+    }
+    if(side == BOTTOM) {
+        translate([hoffset, -pcb_length / 2 + 3, voffset])
+        ventilation_screen_core(width, thickness, layer_thickness);
+    }
+    if(side == LEFT) {
+        translate([-pcb_width / 2 + 3, hoffset, voffset])
+        rotate(a = 90, v = [0, 0, 1])
+        ventilation_screen_core(width, thickness, layer_thickness);
+    }
+    if(side == RIGHT) {
+        translate([ pcb_width / 2 - 3, hoffset, voffset])
+        rotate(a = 90, v = [0, 0, 1])
+        ventilation_screen_core(width, thickness, layer_thickness);
+    }
+}
+
 /* Nut and bolt recesses */
 module nut_recess(height) {
     cylinder(

@@ -43,7 +43,8 @@ layer_0_thickness = layer_0_0_thickness + layer_0_1b_thickness;
 layer_0_1b_hole_offset_z = 2 * box_layer_thickness + pcb_thickness;
 layer_0_1b_hole_thickness = box_layer_thickness;
 
-slit_offset_z = 5 * box_layer_thickness + pcb_thickness;
+/*slit_offset_z = 5 * box_layer_thickness + pcb_thickness;*/
+slit_offset_z = layer_0_0_thickness;
 slit_thickness = layer_0_1b_thickness - slit_offset_z + layer_0_0_thickness;
 
 
