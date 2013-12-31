@@ -252,29 +252,40 @@ module ventilation_slit(side, width, layer_thickness, layer_wall_width, hoffset,
 /* Ventilation back plate element, only used in stuations where we want to
    protect the inside of the box from any intrusion by foreign objects via
    the ventilation slits. */
-module ventilation_screen_core(width, thickness, layer_thickness) {
+module ventilation_screen_core(width, thickness, layer_thickness, strut_length = 0) {
     translate([0, 0, layer_thickness / 2])
     cube(size = [width, thickness, layer_thickness], center = true);
+    if (layer_thickness > 5 && strut_length > 0) {
+        for ( n = [ 0 : floor(layer_thickness / 5) - 1 ] ) {
+            translate([
+                0,
+                strut_length / 2,
+                (layer_thickness - ((floor(layer_thickness / 5) - 1) * 5)) / 2 + n * 5
+            ])
+            cube(size = [width, thickness + strut_length, 1], center = true);
+        }
+    }
 }
 
-module ventilation_screen(side, width, thickness, layer_thickness, hoffset, voffset=0) {
+module ventilation_screen(side, width, thickness, layer_thickness, wall_width, screen_offset, hoffset, voffset=0) {
     if(side == TOP) {
-        translate([hoffset,  pcb_length / 2 - 3, voffset])
-        ventilation_screen_core(width, thickness, layer_thickness);
+        translate([hoffset,  pcb_length / 2 - (screen_offset + thickness), voffset])
+        ventilation_screen_core(width, thickness, layer_thickness, wall_width / 2 + thickness / 2 + screen_offset);
     }
     if(side == BOTTOM) {
-        translate([hoffset, -pcb_length / 2 + 3, voffset])
-        ventilation_screen_core(width, thickness, layer_thickness);
+        translate([hoffset, -pcb_length / 2 + (screen_offset + thickness), voffset])
+        rotate(a = 180, v = [0, 0, 1])
+        ventilation_screen_core(width, thickness, layer_thickness, wall_width / 2 + thickness / 2 + screen_offset);
     }
     if(side == LEFT) {
-        translate([-pcb_width / 2 + 3, hoffset, voffset])
+        translate([-pcb_width / 2 + (screen_offset + thickness), hoffset, voffset])
         rotate(a = 90, v = [0, 0, 1])
-        ventilation_screen_core(width, thickness, layer_thickness);
+        ventilation_screen_core(width, thickness, layer_thickness, wall_width / 2 + thickness / 2 + screen_offset);
     }
     if(side == RIGHT) {
-        translate([ pcb_width / 2 - 3, hoffset, voffset])
-        rotate(a = 90, v = [0, 0, 1])
-        ventilation_screen_core(width, thickness, layer_thickness);
+        translate([ pcb_width / 2 - (screen_offset + thickness), hoffset, voffset])
+        rotate(a = -90, v = [0, 0, 1])
+        ventilation_screen_core(width, thickness, layer_thickness, wall_width / 2 + thickness / 2 + screen_offset);
     }
 }
 

@@ -81,14 +81,14 @@ module layer_0() {
         }
     }
     for ( hoffset = [-18 : 6 : 6] ) {
-        ventilation_screen(TOP, 4, 1, slit_thickness + 0.1, hoffset, slit_offset_z - 0.1);
+        ventilation_screen(TOP, 4, 1, slit_thickness + 0.1, box_wall_width, 2, hoffset, slit_offset_z - 0.1);
     }
     for ( hoffset = [0 : 6 : 18] ) {
-        ventilation_screen(BOTTOM, 4, 1, slit_thickness + 0.1, hoffset, slit_offset_z - 0.1);
+        ventilation_screen(BOTTOM, 4, 1, slit_thickness + 0.1, box_wall_width, 2, hoffset, slit_offset_z - 0.1);
     }
     for ( hoffset = [-36 : 6 : 36] ) {
-        ventilation_screen(RIGHT, 4, 1, slit_thickness + 0.1, hoffset, slit_offset_z - 0.1);
-        ventilation_screen(LEFT, 4, 1, slit_thickness + 0.1, hoffset, slit_offset_z - 0.1);
+        ventilation_screen(RIGHT, 4, 1, slit_thickness + 0.1, box_wall_width, 2, hoffset, slit_offset_z - 0.1);
+        ventilation_screen(LEFT, 4, 1, slit_thickness + 0.1, box_wall_width, 2, hoffset, slit_offset_z - 0.1);
     }
 }
 
