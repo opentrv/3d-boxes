@@ -16,9 +16,9 @@ under the Licence.
 Author(s) / Copyright (s): Bo Herrmannsen, Bruno Girin 2013
 */
 
-include <settings-SSR.scad>;
-include <../main/box-common.scad>;
-include <../main/bitmap.scad>;
+include <settings-v0_2r1-ssr.scad>;
+include <box-common.scad>;
+include <bitmap.scad>;
 
 
 module layer_0_0(thickness=layer_0_0_thickness) {
