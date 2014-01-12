@@ -8,8 +8,5 @@ deps/
 src/include/
 stl/
 
-# automatically generated scad files
-src/box_layer-*.scad
-
 # Eclipse project files.
 /.project
