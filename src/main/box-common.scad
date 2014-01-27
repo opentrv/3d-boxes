@@ -185,7 +185,7 @@ module box_spacer_layer(thickness=box_layer_thickness, surround_feet_thickness=0
 module box_wall_mount_screw_hole_shape(thickness, padding=0) {
     translate([0, -pcb_width / 10, -0.1])
         cylinder(
-            r = wall_mount_screw_hole_cutout_radius * 2 + padding,
+            r = wall_mount_screw_hole_cutout_large_radius + padding,
             h = thickness + 0.2,
             $fn=cylinder_resolution);
     translate([0,  pcb_width / 10, -0.1])

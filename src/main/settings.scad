@@ -54,6 +54,7 @@ pcb_mounting_hole_to_edge = 1;
 pcb_thickness = 2;
 
 wall_mount_screw_hole_cutout_radius = 1.5;
+wall_mount_screw_hole_cutout_large_radius = wall_mount_screw_hole_cutout_radius * 2 + 1;
 wall_mount_screw_hole_cutout_thickness = 0.5;
 wall_mount_screw_hole_cutout_ratio = 1;
 
