@@ -88,6 +88,7 @@ module layer_1_0(thickness=box_layer_thickness) {
 module layer_1_1(thickness=box_layer_thickness) {
     difference() {
         box_spacer_layer(thickness);
+        /* Wire hole for boiler and power */
         box_outside_hole(
             wire_hole_boiler_power_side,
             wire_hole_boiler_power_width,
@@ -95,6 +96,7 @@ module layer_1_1(thickness=box_layer_thickness) {
             wire_hole_boiler_power_offset,
             thickness
         );
+        /* Hole for antenna wire */
         box_outside_hole(
             wire_hole_antenna_side,
             wire_hole_antenna_width,
@@ -102,6 +104,7 @@ module layer_1_1(thickness=box_layer_thickness) {
             wire_hole_antenna_offset,
             thickness
         );
+        /* Holes for LEARN buttons */
         box_outside_hole(
             learn_buttons_side,
             learn_buttons_radius * 2,
@@ -126,6 +129,7 @@ module layer_1() {
             translate([0, 0, layer_1_0_thickness - 0.1])
                 layer_1_1(layer_1_1_thickness + 0.1);
         }
+        /* Hole for FTDI connector */
         translate([0, 0, ftdi_hole_zoffset])
         box_outside_hole(
             ftdi_hole_side,
@@ -140,6 +144,7 @@ module layer_1() {
 module layer_2() {
     difference() {
         box_spacer_layer(layer_2_thickness);
+        /* Hole for the potentiometer */
         box_outside_hole(
             pot_hole_side,
             pot_hole_radius * 2,
@@ -154,12 +159,14 @@ module layer_3() {
     difference() {
         union() {
             box_base(layer_3_thickness);
+            /* Big Red Button craddle main block */
             translate([-red_button_panel_xwidth/2, -red_button_panel_ywidth/2, 0])
             cube(size=[
                 red_button_panel_xwidth,
                 red_button_panel_ywidth,
                 red_button_panel_zoffset + layer_3_thickness]);
         }
+        /* Big Red Button craddle extrusions */
         translate([-red_button_xwidth/2, -red_button_ywidth/2, -0.1])
         cube(size=[
             red_button_xwidth,
