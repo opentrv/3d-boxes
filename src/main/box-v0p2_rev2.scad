@@ -96,6 +96,14 @@ module layer_1_1(thickness=box_layer_thickness) {
             wire_hole_boiler_power_offset,
             thickness
         );
+        /* Hole for the LDR */
+        box_outside_hole(
+            ldr_hole_side,
+            ldr_hole_width,
+            box_wall_width + 0.1,
+            ldr_hole_offset,
+            thickness
+        );
         /* Hole for antenna wire */
         box_outside_hole(
             wire_hole_antenna_side,

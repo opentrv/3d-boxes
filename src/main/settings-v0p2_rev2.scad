@@ -61,13 +61,13 @@ wire_hole_antenna_offset = 17.5;
 pot_hole_side = RIGHT;
 pot_hole_radius = 3;
 pot_hole_zoffset = 7;
-pot_hole_offset = 0;
+pot_hole_offset = -3;
 
 /* Learn buttons */
 learn_buttons_side = RIGHT;
 learn_buttons_radius = 2;
 learn_buttons_zoffset = 3;
-learn_buttons_offset = 14; /* same offset for both each side of pot */
+learn_buttons_offset = 14; /* same offset for both, each side of centre */
 
 /* FTDI connector */
 ftdi_hole_side = TOP;
@@ -76,9 +76,14 @@ ftdi_hole_width = 18;
 ftdi_hole_zoffset = 2;
 
 /* LED */
-led_hole_xoffset = 0;
-led_hole_yoffset = 15;
+led_hole_xoffset = 21;
+led_hole_yoffset = 7;
 led_hole_radius = 2.5;
+
+/* LDR */
+ldr_hole_side = LEFT;
+ldr_hole_offset = -8;
+ldr_hole_width = 6;
 
 /* Labels */
 label_learn_chars = ["L"];
