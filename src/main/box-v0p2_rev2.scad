@@ -113,37 +113,15 @@ module layer_1_1(thickness=box_layer_thickness) {
 }
 
 module layer_1() {
-    difference() {
-        union() {
-            layer_1_0(layer_1_0_thickness);
-            translate([0, 0, layer_1_0_thickness - 0.1])
-                layer_1_1(layer_1_1_thickness + 0.1);
-        }
-        translate([
-            pcb_width / 2 - pcb_mounting_hole_radius - pcb_mounting_hole_to_edge -
-                (pcb_mounting_hole_radius + pcb_mounting_hole_max_padding + 0.1),
-            -pcb_length / 2 + pcb_mounting_hole_radius + pcb_mounting_hole_to_edge,
-            -0.1])
-        cube(size = [
-            pcb_mounting_hole_radius + pcb_mounting_hole_max_padding + 0.1,
-            pcb_mounting_hole_radius + pcb_mounting_hole_max_padding + 0.1,
-            layer_1_thickness + 0.2]);
+    union() {
+        layer_1_0(layer_1_0_thickness);
+        translate([0, 0, layer_1_0_thickness - 0.1])
+            layer_1_1(layer_1_1_thickness + 0.1);
     }
 }
 
 module layer_2() {
-    difference() {
-        box_spacer_layer(layer_2_thickness);
-        translate([
-            pcb_width / 2 - pcb_mounting_hole_radius - pcb_mounting_hole_to_edge -
-                (pcb_mounting_hole_radius + pcb_mounting_hole_max_padding + 0.1),
-            -pcb_length / 2 + pcb_mounting_hole_radius + pcb_mounting_hole_to_edge,
-            -0.1])
-        cube(size = [
-            pcb_mounting_hole_radius + pcb_mounting_hole_max_padding + 0.1,
-            pcb_mounting_hole_radius + pcb_mounting_hole_max_padding + 0.1,
-            layer_2_thickness + 0.2]);
-    }
+    box_spacer_layer(layer_2_thickness);
 }
 
 module layer_3() {
