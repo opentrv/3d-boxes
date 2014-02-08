@@ -74,3 +74,11 @@ nut_recess_radius = 6.25 / 2;
 nut_recess_height = 2;
 bolt_head_recess_height = 1;
 
+/* Red button dimensions */
+red_button_xwidth = 14;
+red_button_ywidth = 16;
+red_button_clip_margin = 2;
+red_button_clip_extent = 4;
+red_button_panel_thickness = 1.5;
+red_button_panel_zoffset = 5;
+
