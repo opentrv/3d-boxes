@@ -75,6 +75,11 @@ ftdi_hole_offset = -10;
 ftdi_hole_width = 18;
 ftdi_hole_zoffset = 2;
 
+/* LED */
+led_hole_xoffset = 0;
+led_hole_yoffset = 15;
+led_hole_radius = 2.5;
+
 /* Labels */
 label_learn_chars = ["L"];
 label_learn_char_count = 1;

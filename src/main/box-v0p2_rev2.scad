@@ -182,6 +182,12 @@ module layer_3() {
         /* Recesses */
         translate([0, 0, layer_3_thickness - bolt_head_recess_height])
             nut_recesses(bolt_head_recess_height);
+        /* LED hole */
+        translate([led_hole_xoffset, led_hole_yoffset, -0.1])
+        cylinder (
+            h = layer_3_thickness + 0.2,
+            r = led_hole_radius + hole_fudge_factor,
+            $fn = cylinder_resolution);
     }
 }
 
