@@ -89,17 +89,10 @@ module layer_1_1(thickness=box_layer_thickness) {
     difference() {
         box_spacer_layer(thickness);
         box_outside_hole(
-            wire_hole_power_side,
-            wire_hole_power_width,
+            wire_hole_boiler_power_side,
+            wire_hole_boiler_power_width,
             box_wall_width + 0.1,
-            wire_hole_power_offset,
-            thickness
-        );
-        box_outside_hole(
-            wire_hole_boiler_side,
-            wire_hole_boiler_width,
-            box_wall_width + 0.1,
-            wire_hole_boiler_offset,
+            wire_hole_boiler_power_offset,
             thickness
         );
         box_outside_hole(
@@ -107,6 +100,20 @@ module layer_1_1(thickness=box_layer_thickness) {
             wire_hole_antenna_width,
             box_wall_width + 0.1,
             wire_hole_antenna_offset,
+            thickness
+        );
+        box_outside_hole(
+            learn_buttons_side,
+            learn_buttons_radius * 2,
+            box_wall_width + 0.1,
+            learn_buttons_offset,
+            thickness
+        );
+        box_outside_hole(
+            learn_buttons_side,
+            learn_buttons_radius * 2,
+            box_wall_width + 0.1,
+            -learn_buttons_offset,
             thickness
         );
     }
@@ -121,7 +128,16 @@ module layer_1() {
 }
 
 module layer_2() {
-    box_spacer_layer(layer_2_thickness);
+    difference() {
+        box_spacer_layer(layer_2_thickness);
+        box_outside_hole(
+            pot_hole_side,
+            pot_hole_radius * 2,
+            box_wall_width + 0.1,
+            pot_hole_offset,
+            pot_hole_radius * 2
+        );
+    }
 }
 
 module layer_3() {

@@ -38,8 +38,8 @@ layer_0_0_thickness = box_layer_thickness;
 layer_0_1_thickness = 2 * box_layer_thickness;
 layer_0_2_thickness = pcb_thickness;
 layer_0_thickness = layer_0_0_thickness + layer_0_1_thickness + layer_0_2_thickness;
-layer_1_0_thickness = box_layer_thickness;
-layer_1_1_thickness = box_layer_thickness;
+layer_1_0_thickness = 3; /* Same as learn button zoffset */
+layer_1_1_thickness = 4; /* Same as learn button diameter */
 layer_1_thickness = layer_1_0_thickness + layer_1_1_thickness;
 layer_3_thickness = box_layer_thickness;
 layer_2_thickness = box_height - layer_0_thickness - layer_1_thickness - layer_3_thickness;
@@ -49,15 +49,25 @@ usb_connector_side = LEFT;
 usb_connector_offset = 12;
 
 /* Wire holes */
-wire_hole_power_width = 18;
-wire_hole_power_side = TOP;
-wire_hole_power_offset = -8.75;
-wire_hole_boiler_width = 9;
-wire_hole_boiler_side = BOTTOM;
-wire_hole_boiler_offset = 15.625;
+/* Boiler and power served by same hole */
+wire_hole_boiler_power_side = LEFT;
+wire_hole_boiler_power_width = 12;
+wire_hole_boiler_power_offset = 0;
 wire_hole_antenna_width = 3;
 wire_hole_antenna_side = TOP;
-wire_hole_antenna_offset = 18.125;
+wire_hole_antenna_offset = 17.5;
+
+/* Potentiometer */
+pot_hole_side = RIGHT;
+pot_hole_radius = 3;
+pot_hole_zoffset = 7;
+pot_hole_offset = 0;
+
+/* Learn buttons */
+learn_buttons_side = RIGHT;
+learn_buttons_radius = 2;
+learn_buttons_zoffset = 3;
+learn_buttons_offset = 14; /* same offset for both each side of pot */
 
 /* Labels */
 label_learn_chars = ["L"];
