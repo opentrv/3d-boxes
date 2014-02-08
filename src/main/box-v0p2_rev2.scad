@@ -120,10 +120,20 @@ module layer_1_1(thickness=box_layer_thickness) {
 }
 
 module layer_1() {
-    union() {
-        layer_1_0(layer_1_0_thickness);
-        translate([0, 0, layer_1_0_thickness - 0.1])
-            layer_1_1(layer_1_1_thickness + 0.1);
+    difference() {
+        union() {
+            layer_1_0(layer_1_0_thickness);
+            translate([0, 0, layer_1_0_thickness - 0.1])
+                layer_1_1(layer_1_1_thickness + 0.1);
+        }
+        translate([0, 0, ftdi_hole_zoffset])
+        box_outside_hole(
+            ftdi_hole_side,
+            ftdi_hole_width,
+            box_wall_width + 0.1,
+            ftdi_hole_offset,
+            layer_1_thickness - ftdi_hole_zoffset
+        );
     }
 }
 
