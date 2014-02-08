@@ -16,7 +16,7 @@ under the Licence.
 Author(s) / Copyright (s): Bruno Girin 2013
 */
 
-include <settings-v0_2r1.scad>;
+include <settings-v0p2_rev1.scad>;
 include <box-common.scad>;
 include <bitmap.scad>;
 
