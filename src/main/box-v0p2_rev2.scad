@@ -146,133 +146,26 @@ module layer_2() {
     }
 }
 
-module spacer() {
-    cylinder(
-        r1 = 2nd_board_spacer_radius,
-        r2 = 2nd_board_spacer_radius * 1.5,
-        h = 2nd_board_spacer_height + 0.1,
-        $fn=cylinder_resolution);
-}
-
-module spacers() {
-    corner_offset = 2nd_board_spacer_radius * sqrt(2) / 2;
-    difference() {
-        union() {
-            translate([
-                    -2nd_board_spacer_distance_x / 2,
-                     2nd_board_spacer_distance_y / 2,
-                     0])
-                spacer();
-            translate([
-                     2nd_board_spacer_distance_x / 2,
-                     2nd_board_spacer_distance_y / 2,
-                     0])
-                spacer();
-            translate([
-                    -2nd_board_spacer_distance_x / 2,
-                    -2nd_board_spacer_distance_y / 2,
-                     0])
-                spacer();
-            translate([
-                     2nd_board_spacer_distance_x / 2,
-                    -2nd_board_spacer_distance_y / 2,
-                     0])
-                spacer();
-        }
-        translate([
-                -2nd_board_spacer_distance_x / 2 + corner_offset,
-                -2nd_board_spacer_distance_y / 2 + corner_offset,
-                -0.1])
-            cube(size = [
-                2nd_board_spacer_distance_x - corner_offset * 2,
-                2nd_board_spacer_distance_y - corner_offset * 2,
-                2nd_board_spacer_height + 0.3]);
-    }
-}
-
-module spacer_hole() {
-    translate([0, 0, -0.1])
-        cylinder(
-            r = 2nd_board_spacer_hole_radius,
-            h = 2nd_board_spacer_hole_height + 0.1,
-            $fn=cylinder_resolution);
-}
-
-module spacer_holes() {
-    translate([
-            -2nd_board_spacer_distance_x / 2,
-             2nd_board_spacer_distance_y / 2,
-             0])
-        spacer_hole();
-    translate([
-             2nd_board_spacer_distance_x / 2,
-             2nd_board_spacer_distance_y / 2,
-             0])
-        spacer_hole();
-    translate([
-            -2nd_board_spacer_distance_x / 2,
-            -2nd_board_spacer_distance_y / 2,
-             0])
-        spacer_hole();
-    translate([
-             2nd_board_spacer_distance_x / 2,
-            -2nd_board_spacer_distance_y / 2,
-             0])
-        spacer_hole();
-}
-
 module layer_3() {
-    corner_offset = 2nd_board_spacer_radius * sqrt(2) / 2;
-    difference() {
-        union() {
-            difference() {
-                box_base(layer_3_thickness);
-                box_mounting_holes(layer_3_thickness);
-                /* Hole for buttons and LED */
-                translate([
-                        -2nd_board_spacer_distance_x / 2 + corner_offset + 2nd_board_offset_x,
-                        -2nd_board_spacer_distance_y / 2 + corner_offset + 2nd_board_offset_y,
-                        -0.1])
-                    cube(size = [
-                        2nd_board_spacer_distance_x - corner_offset * 2,
-                        2nd_board_spacer_distance_y - corner_offset * 2,
-                        layer_3_thickness + 0.2]);
-                /* Learn label */
-                translate([
-                    2nd_board_spacer_distance_x / 8 + 2nd_board_offset_x,
-                    2nd_board_spacer_distance_y / 1.5 + 2nd_board_offset_y,
-                    layer_3_thickness - label_recess_depth + 0.5
-                    ])
-                rotate(a = -90, v = [0, 0, 1])
-                    8bit_str(label_learn_chars, label_learn_char_count, label_block_size, label_recess_depth + 0.1);
-                /* Model label */
-                translate([
-                    -2nd_board_spacer_distance_x / 8 + 2nd_board_offset_x,
-                    2nd_board_spacer_distance_y / 1.5 + 2nd_board_offset_y,
-                    layer_3_thickness - label_recess_depth + 0.1
-                    ])
-                rotate(a = -90, v = [0, 0, 1])
-                    8bit_str(label_mode_chars, label_mode_char_count, label_block_size, label_recess_depth + 0.1);
-                /* OpenTRV label */
-                translate([
-                    -label_opentrv_char_count * 3.5 * label_block_size,
-                    -pcb_length / 4,
-                    layer_3_thickness - label_recess_depth + 0.1
-                    ])
-                rotate(a = -90, v = [0, 0, 1])
-                    8bit_str(label_opentrv_chars, label_opentrv_char_count, label_block_size, label_recess_depth + 0.1);
-                /* Recesses */
-                translate([0, 0, layer_3_thickness - bolt_head_recess_height - cylinder_bridge_height])
-                    nut_recesses(bolt_head_recess_height + cylinder_bridge_height);
-            }
-            translate([2nd_board_offset_x, 2nd_board_offset_y, -2nd_board_spacer_height])
-                spacers();
-            translate([0, 0, layer_3_thickness - bolt_head_recess_height])
-            rotate(v=[1, 0, 0], a=180)
-                cylinder_bridges(pcb_mounting_hole_radius + hole_fudge_factor, nut_recess_radius);
+    union() {
+        difference() {
+            box_base(layer_3_thickness);
+            box_mounting_holes(layer_3_thickness);
+            /* OpenTRV label */
+            translate([
+                -label_opentrv_char_count * 3.5 * label_block_size,
+                -pcb_length / 4,
+                layer_3_thickness - label_recess_depth + 0.1
+                ])
+            rotate(a = -90, v = [0, 0, 1])
+                8bit_str(label_opentrv_chars, label_opentrv_char_count, label_block_size, label_recess_depth + 0.1);
+            /* Recesses */
+            translate([0, 0, layer_3_thickness - bolt_head_recess_height - cylinder_bridge_height])
+                nut_recesses(bolt_head_recess_height + cylinder_bridge_height);
         }
-        translate([2nd_board_offset_x, 2nd_board_offset_y, -2nd_board_spacer_height])
-            spacer_holes();
+        translate([0, 0, layer_3_thickness - bolt_head_recess_height])
+        rotate(v=[1, 0, 0], a=180)
+            cylinder_bridges(pcb_mounting_hole_radius + hole_fudge_factor, nut_recess_radius);
     }
 }
 
@@ -309,8 +202,7 @@ if(box_layout == BOX_LAYOUT_STACKED) {
     translate([
          (box_total_width + box_layout_spacing) / 2,
          (box_total_length + box_layout_spacing) / 2,
-        layer_3_thickness])
-    rotate(a = 180, v = [1, 0, 0])
+        0])
     layer_3();
     
     if(use_lilypads == true) {
