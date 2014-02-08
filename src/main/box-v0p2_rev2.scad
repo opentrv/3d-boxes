@@ -138,12 +138,9 @@ module layer_3() {
             rotate(a = -90, v = [0, 0, 1])
                 8bit_str(label_opentrv_chars, label_opentrv_char_count, label_block_size, label_recess_depth + 0.1);
             /* Recesses */
-            translate([0, 0, layer_3_thickness - bolt_head_recess_height - cylinder_bridge_height])
-                nut_recesses(bolt_head_recess_height + cylinder_bridge_height);
+            translate([0, 0, layer_3_thickness - bolt_head_recess_height])
+                nut_recesses(bolt_head_recess_height);
         }
-        translate([0, 0, layer_3_thickness - bolt_head_recess_height])
-        rotate(v=[1, 0, 0], a=180)
-            cylinder_bridges(pcb_mounting_hole_radius + hole_fudge_factor, nut_recess_radius);
     }
 }
 
