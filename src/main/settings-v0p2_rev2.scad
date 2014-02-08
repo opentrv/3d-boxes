@@ -75,10 +75,16 @@ nut_recess_height = 2;
 bolt_head_recess_height = 1;
 
 /* Red button dimensions */
-red_button_xwidth = 14;
-red_button_ywidth = 16;
+red_button_xwidth = 16;
+red_button_ywidth = 14;
+red_button_margin = 2;
 red_button_clip_margin = 2;
 red_button_clip_extent = 4;
 red_button_panel_thickness = 1.5;
 red_button_panel_zoffset = 5;
+red_button_panel_xwidth = red_button_xwidth + 2 * red_button_clip_extent + 2 * red_button_margin;
+red_button_panel_ywidth = red_button_ywidth + 2 * red_button_margin;
+red_button_clip_xwidth = red_button_xwidth + 2 * red_button_clip_extent;
+red_button_clip_ywidth = red_button_ywidth - 2 * red_button_clip_margin;
+red_button_clip_height = red_button_panel_zoffset - red_button_panel_thickness;
 

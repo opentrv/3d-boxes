@@ -126,7 +126,24 @@ module layer_2() {
 
 module layer_3() {
     difference() {
-        box_base(layer_3_thickness);
+        union() {
+            box_base(layer_3_thickness);
+            translate([-red_button_panel_xwidth/2, -red_button_panel_ywidth/2, 0])
+            cube(size=[
+                red_button_panel_xwidth,
+                red_button_panel_ywidth,
+                red_button_panel_zoffset + layer_3_thickness]);
+        }
+        translate([-red_button_xwidth/2, -red_button_ywidth/2, -0.1])
+        cube(size=[
+            red_button_xwidth,
+            red_button_ywidth,
+            red_button_panel_zoffset + layer_3_thickness + 0.2]);
+        translate([-red_button_clip_xwidth/2, -red_button_clip_ywidth/2, -0.1])
+        cube(size=[
+            red_button_clip_xwidth,
+            red_button_clip_ywidth,
+            red_button_clip_height + layer_3_thickness + 0.1]);
         box_mounting_holes(layer_3_thickness);
         /* OpenTRV label */
         translate([
