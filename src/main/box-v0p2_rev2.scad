@@ -125,22 +125,20 @@ module layer_2() {
 }
 
 module layer_3() {
-    union() {
-        difference() {
-            box_base(layer_3_thickness);
-            box_mounting_holes(layer_3_thickness);
-            /* OpenTRV label */
-            translate([
-                -label_opentrv_char_count * 3.5 * label_block_size,
-                -pcb_length / 4,
-                layer_3_thickness - label_recess_depth + 0.1
-                ])
-            rotate(a = -90, v = [0, 0, 1])
-                8bit_str(label_opentrv_chars, label_opentrv_char_count, label_block_size, label_recess_depth + 0.1);
-            /* Recesses */
-            translate([0, 0, layer_3_thickness - bolt_head_recess_height])
-                nut_recesses(bolt_head_recess_height);
-        }
+    difference() {
+        box_base(layer_3_thickness);
+        box_mounting_holes(layer_3_thickness);
+        /* OpenTRV label */
+        translate([
+            -label_opentrv_char_count * 3.5 * label_block_size,
+            -pcb_length / 4,
+            layer_3_thickness - label_recess_depth + 0.1
+            ])
+        rotate(a = -90, v = [0, 0, 1])
+            8bit_str(label_opentrv_chars, label_opentrv_char_count, label_block_size, label_recess_depth + 0.1);
+        /* Recesses */
+        translate([0, 0, layer_3_thickness - bolt_head_recess_height])
+            nut_recesses(bolt_head_recess_height);
     }
 }
 
