@@ -155,10 +155,10 @@ module layer_2() {
         /* Hole for the potentiometer */
         box_outside_hole(
             pot_hole_side,
-            pot_hole_radius * 2,
+            (pot_hole_radius + hole_fudge_factor) * 2,
             box_wall_width + 0.1,
             pot_hole_offset,
-            pot_hole_radius * 2
+            (pot_hole_radius + hole_fudge_factor) * 2
         );
     }
 }
@@ -175,15 +175,21 @@ module layer_3() {
                 red_button_panel_zoffset + layer_3_thickness]);
         }
         /* Big Red Button craddle extrusions */
-        translate([-red_button_xwidth/2, -red_button_ywidth/2, -0.1])
+        translate([
+            -red_button_xwidth/2 - hole_fudge_factor,
+            -red_button_ywidth/2 - hole_fudge_factor,
+            -0.1])
         cube(size=[
-            red_button_xwidth,
-            red_button_ywidth,
+            red_button_xwidth + 2 * hole_fudge_factor,
+            red_button_ywidth + 2 * hole_fudge_factor,
             red_button_panel_zoffset + layer_3_thickness + 0.2]);
-        translate([-red_button_clip_xwidth/2, -red_button_clip_ywidth/2, -0.1])
+        translate([
+            -red_button_clip_xwidth/2 - hole_fudge_factor,
+            -red_button_clip_ywidth/2 - hole_fudge_factor,
+            -0.1])
         cube(size=[
-            red_button_clip_xwidth,
-            red_button_clip_ywidth,
+            red_button_clip_xwidth + 2 * hole_fudge_factor,
+            red_button_clip_ywidth + 2 * hole_fudge_factor,
             red_button_clip_height + layer_3_thickness + 0.1]);
         box_mounting_holes(layer_3_thickness);
         /* OpenTRV label */
