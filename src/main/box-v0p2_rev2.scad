@@ -233,7 +233,8 @@ if(box_layout == BOX_LAYOUT_STACKED) {
     translate([
         -(box_total_width + box_layout_spacing) / 2,
          (box_total_length + box_layout_spacing) / 2,
-        0])
+        layer_2_thickness])
+    rotate(v=[1,0,0], a=180)
     layer_2();
 
     translate([
