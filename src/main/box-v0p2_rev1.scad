@@ -303,19 +303,19 @@ if(box_layout == BOX_LAYOUT_STACKED) {
         
         /* Side lilypads (elliptical) */
         translate([box_total_width + box_layout_spacing/2, 0, 0])
-        scale([0.5, 1, 1])
+        scale([lilypad_small_radius / lilypad_large_radius, 1, 1])
         cylinder(h = lilypad_height, r = lilypad_large_radius);
         
         translate([-box_total_width - box_layout_spacing/2, 0, 0])
-        scale([0.5, 1, 1])
+        scale([lilypad_small_radius / lilypad_large_radius, 1, 1])
         cylinder(h = lilypad_height, r = lilypad_large_radius);
         
         translate([0, box_total_width + box_layout_spacing/2, 0])
-        scale([1, 0.5, 1])
+        scale([1, lilypad_small_radius / lilypad_large_radius, 1])
         cylinder(h = lilypad_height, r = lilypad_large_radius);
         
         translate([0, -box_total_width - box_layout_spacing/2, 0])
-        scale([1, 0.5, 1])
+        scale([1, lilypad_small_radius / lilypad_large_radius, 1])
         cylinder(h = lilypad_height, r = lilypad_large_radius);
         
         /* Corner lilypads */
