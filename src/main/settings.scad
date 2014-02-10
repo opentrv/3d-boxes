@@ -17,10 +17,14 @@ Author(s) / Copyright (s): Bruno Girin 2013
 */
 
 /* General constants */
-TOP    = 0;
-RIGHT  = 1;
-BOTTOM = 2;
-LEFT   = 3;
+TOP          = 0;
+RIGHT        = 1;
+BOTTOM       = 2;
+LEFT         = 3;
+TOP_RIGHT    = 4;
+TOP_LEFT     = 5;
+BOTTOM_RIGHT = 6;
+BOTTOM_LEFT  = 7;
 
 cylinder_resolution = 90;
 

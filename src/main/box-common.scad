@@ -372,3 +372,49 @@ module cylinder_bridges(small_radius, large_radius) {
     }
 }
 
+module strut_shaving(corner, thickness) {
+    if(corner == TOP_RIGHT) {
+        translate([
+            pcb_width / 2 - pcb_mounting_hole_radius - pcb_mounting_hole_to_edge -
+                (pcb_mounting_hole_radius + pcb_mounting_hole_max_padding + 0.1),
+            pcb_length / 2 - pcb_mounting_hole_radius - pcb_mounting_hole_to_edge -
+                (pcb_mounting_hole_radius + pcb_mounting_hole_max_padding + 0.1),
+            -0.1])
+        cube(size = [
+            pcb_mounting_hole_radius + pcb_mounting_hole_max_padding + 0.1,
+            pcb_mounting_hole_radius + pcb_mounting_hole_max_padding + 0.1,
+            thickness + 0.2]);
+    }
+    if(corner == TOP_LEFT) {
+        translate([
+            -pcb_width / 2 + pcb_mounting_hole_radius + pcb_mounting_hole_to_edge,
+            pcb_length / 2 - pcb_mounting_hole_radius - pcb_mounting_hole_to_edge -
+                (pcb_mounting_hole_radius + pcb_mounting_hole_max_padding + 0.1),
+            -0.1])
+        cube(size = [
+            pcb_mounting_hole_radius + pcb_mounting_hole_max_padding + 0.1,
+            pcb_mounting_hole_radius + pcb_mounting_hole_max_padding + 0.1,
+            thickness + 0.2]);
+    }
+    if(corner == BOTTOM_RIGHT) {
+        translate([
+            pcb_width / 2 - pcb_mounting_hole_radius - pcb_mounting_hole_to_edge -
+                (pcb_mounting_hole_radius + pcb_mounting_hole_max_padding + 0.1),
+            -pcb_length / 2 + pcb_mounting_hole_radius + pcb_mounting_hole_to_edge,
+            -0.1])
+        cube(size = [
+            pcb_mounting_hole_radius + pcb_mounting_hole_max_padding + 0.1,
+            pcb_mounting_hole_radius + pcb_mounting_hole_max_padding + 0.1,
+            thickness + 0.2]);
+    }
+    if(corner == BOTTOM_LEFT) {
+        translate([
+            -pcb_width / 2 + pcb_mounting_hole_radius + pcb_mounting_hole_to_edge,
+            -pcb_length / 2 + pcb_mounting_hole_radius + pcb_mounting_hole_to_edge,
+            -0.1])
+        cube(size = [
+            pcb_mounting_hole_radius + pcb_mounting_hole_max_padding + 0.1,
+            pcb_mounting_hole_radius + pcb_mounting_hole_max_padding + 0.1,
+            thickness + 0.2]);
+    }
+}
