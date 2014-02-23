@@ -45,7 +45,7 @@ box_layout_spacing = 10;
 /* Lilypad settings */
 lilypad_height = 0.3;
 lilypad_large_radius = box_layout_spacing;
-lilypad_small_radius = 5;
+lilypad_small_radius = lilypad_large_radius / 2;
 
 /* Cylinder bridge settings */
 cylinder_bridge_layer_height = 0.3;

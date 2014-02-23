@@ -261,50 +261,7 @@ if(box_layout == BOX_LAYOUT_STACKED) {
     layer_3();
     
     if(use_lilypads == true) {
-        /* Center lilypad */
-        cylinder(h = lilypad_height, r = lilypad_large_radius);
-        
-        /* Side lilypads (elliptical) */
-        translate([box_total_width + box_layout_spacing/2, 0, 0])
-        scale([0.5, 1, 1])
-        cylinder(h = lilypad_height, r = lilypad_large_radius);
-        
-        translate([-box_total_width - box_layout_spacing/2, 0, 0])
-        scale([0.5, 1, 1])
-        cylinder(h = lilypad_height, r = lilypad_large_radius);
-        
-        translate([0, box_total_width + box_layout_spacing/2, 0])
-        scale([1, 0.5, 1])
-        cylinder(h = lilypad_height, r = lilypad_large_radius);
-        
-        translate([0, -box_total_width - box_layout_spacing/2, 0])
-        scale([1, 0.5, 1])
-        cylinder(h = lilypad_height, r = lilypad_large_radius);
-        
-        /* Corner lilypads */
-        translate([
-            box_total_width + box_layout_spacing/2,
-            box_total_width + box_layout_spacing/2,
-            0])
-        cylinder(h = lilypad_height, r = lilypad_small_radius);
-
-        translate([
-            box_total_width + box_layout_spacing/2,
-            -box_total_width - box_layout_spacing/2,
-            0])
-        cylinder(h = lilypad_height, r = lilypad_small_radius);
-
-        translate([
-            -box_total_width - box_layout_spacing/2,
-            box_total_width + box_layout_spacing/2,
-            0])
-        cylinder(h = lilypad_height, r = lilypad_small_radius);
-
-        translate([
-            -box_total_width - box_layout_spacing/2,
-            -box_total_width - box_layout_spacing/2,
-            0])
-        cylinder(h = lilypad_height, r = lilypad_small_radius);
+        lilypads(2, 2, box_total_width, box_total_length);
     }
 }
 

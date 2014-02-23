@@ -421,3 +421,63 @@ module strut_shaving(corner, thickness) {
             thickness + 0.2]);
     }
 }
+
+/* Lilypads */
+module lilypad(x, y, rx, ry) {
+    translate([x, y, 0])
+    scale([1, ry / rx, 1])
+    cylinder(h = lilypad_height, r = rx);
+}
+
+module lilypad_column(x, rx, ny, box_size_y) {
+    /* Start lilypad */
+    lilypad(
+        x,
+        -(ny * box_size_y + (ny - 1) * box_layout_spacing) / 2,
+        rx,
+        lilypad_small_radius
+    );
+    /* Middle lilypads */
+    for ( n = [-(ny - 2) / 2 : (ny - 2) / 2] ) {
+        lilypad(
+            x,
+            n * (box_size_y + box_layout_spacing),
+            rx,
+            lilypad_large_radius
+        );
+    }
+    /* End lilypad */
+    lilypad(
+        x,
+        (ny * box_size_y + (ny - 1) * box_layout_spacing) / 2,
+        rx,
+        lilypad_small_radius
+    );
+}
+
+module lilypads(nx, ny, box_size_x, box_size_y) {
+    /* Start column */
+    lilypad_column(
+        -(nx * box_size_x + (nx - 1) * box_layout_spacing) / 2,
+        lilypad_small_radius,
+        ny,
+        box_size_y
+    );
+    /* Middle columns */
+    for ( n = [-(nx - 2) / 2 : (nx - 2) / 2] ) {
+        lilypad_column(
+            n * (box_size_x + box_layout_spacing),
+            lilypad_large_radius,
+            ny,
+            box_size_y
+        );
+    }
+    /* End column */
+    lilypad_column(
+        (nx * box_size_x + (nx - 1) * box_layout_spacing) / 2,
+        lilypad_small_radius,
+        ny,
+        box_size_y
+    );
+}
+
