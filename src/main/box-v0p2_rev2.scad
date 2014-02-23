@@ -112,21 +112,6 @@ module layer_1_1(thickness=box_layer_thickness) {
             wire_hole_antenna_offset,
             thickness
         );
-        /* Holes for LEARN buttons */
-        box_outside_hole(
-            learn_buttons_side,
-            learn_buttons_radius * 2,
-            box_wall_width + 0.1,
-            learn_buttons_offset,
-            thickness
-        );
-        box_outside_hole(
-            learn_buttons_side,
-            learn_buttons_radius * 2,
-            box_wall_width + 0.1,
-            -learn_buttons_offset,
-            thickness
-        );
     }
 }
 
@@ -137,6 +122,23 @@ module layer_1() {
             translate([0, 0, layer_1_0_thickness - 0.1])
                 layer_1_1(layer_1_1_thickness + 0.1);
         }
+        /* Holes for LEARN buttons */
+        translate([0, 0, learn_buttons_zoffset])
+        box_outside_hole(
+            learn_buttons_side,
+            learn_buttons_radius * 2,
+            box_wall_width + 0.1,
+            learn_buttons_offset,
+            layer_1_thickness - learn_buttons_zoffset
+        );
+        translate([0, 0, learn_buttons_zoffset])
+        box_outside_hole(
+            learn_buttons_side,
+            learn_buttons_radius * 2,
+            box_wall_width + 0.1,
+            -learn_buttons_offset,
+            layer_1_thickness - learn_buttons_zoffset
+        );
         /* Hole for FTDI connector */
         translate([0, 0, ftdi_hole_zoffset])
         box_outside_hole(

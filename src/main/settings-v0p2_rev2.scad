@@ -66,7 +66,7 @@ pot_hole_offset = -3;
 /* Learn buttons */
 learn_buttons_side = RIGHT;
 learn_buttons_radius = 2;
-learn_buttons_zoffset = 3;
+learn_buttons_zoffset = 1.5;
 learn_buttons_offset = 14; /* same offset for both, each side of centre */
 
 /* FTDI connector */
