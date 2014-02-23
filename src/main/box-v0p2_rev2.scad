@@ -139,6 +139,15 @@ module layer_1() {
             -learn_buttons_offset,
             layer_1_thickness - learn_buttons_zoffset
         );
+        /* Hole for bottom of potentiometer */
+        translate([0, 0, pot_hole_zoffset])
+        box_outside_hole(
+            pot_hole_side,
+            (pot_hole_radius + hole_fudge_factor) * 2,
+            box_wall_width + 0.1,
+            pot_hole_offset,
+            layer_1_thickness - pot_hole_zoffset
+        );
         /* Hole for FTDI connector */
         translate([0, 0, ftdi_hole_zoffset])
         box_outside_hole(
