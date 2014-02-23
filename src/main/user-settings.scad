@@ -28,10 +28,24 @@ Specify how the different layers of the box should be laid out:
 - BOX_LAYOUT_STACKED lays out the different layers one on top of each other
   with a small space in between: this is useful to show how the box is
   assembled.
+- BOX_LAYOUT_1LAYER_PRINT is used to lay out several copies of a single layer
+  side by side so that a given printer can be dedicated to a specific layer.
 */
 BOX_LAYOUT_PRINT = 0;
 BOX_LAYOUT_STACKED = 1;
+BOX_LAYOUT_1LAYER_PRINT = 2;
 box_layout = BOX_LAYOUT_PRINT;
+
+/*
+Parameters specific to the BOX_LAYOUT_1LAYER_PRINT option
+- layer_to_print is the number of the layer to print, starting with 0 for the
+  bottom layer.
+- n_prints_x is the number of prints in the X dimension.
+- n_prints_y is the number of prints in the Y dimension.
+*/
+layer_to_print = 0;
+n_prints_x = 3;
+n_prints_y = 2;
 
 /*
 Specify the fudge ratio for the screw holes and the PCB hole. This is a value
