@@ -132,12 +132,22 @@ module layer_1() {
     }
 }
 
+module print_layer(n) {
+    if ( n == 0 ) {
+        layer_0();
+    }
+    if ( n == 1 ) {
+        layer_1();
+    }
+}
+
 if(box_layout == BOX_LAYOUT_STACKED) {
     layer_0();
 
     translate([0, 0, layer_0_thickness + box_layout_spacing])
     layer_1();
-} else {
+}
+if(box_layout == BOX_LAYOUT_PRINT) {
     translate([
         -(box_total_width + box_layout_spacing) / 2,
         0,
@@ -154,4 +164,19 @@ if(box_layout == BOX_LAYOUT_STACKED) {
         lilypads(2, 1, box_total_width, box_total_length);
     }
 }
-
+if(box_layout == BOX_LAYOUT_1LAYER_PRINT) {
+    for ( dx = [ -(n_prints_x - 1) / 2 : (n_prints_x - 1) / 2 ] ) {
+        for ( dy = [ -(n_prints_y - 1) / 2 : (n_prints_y - 1) / 2 ] ) {
+            translate([
+                dx * (box_total_width + box_layout_spacing),
+                dy * (box_total_length + box_layout_spacing),
+                0
+            ])
+            print_layer(layer_to_print);
+        }
+    }
+    
+    if(use_lilypads == true) {
+        lilypads(n_prints_x, n_prints_y, box_total_width, box_total_length);
+    }
+}
