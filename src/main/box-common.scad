@@ -372,6 +372,9 @@ module cylinder_bridges(small_radius, large_radius) {
     }
 }
 
+/* Strut shavings for cases where we need to shave off the corner of a
+   bolt strut as in the rev1 box.
+ */
 module strut_shaving(corner, thickness) {
     if(corner == TOP_RIGHT) {
         translate([
