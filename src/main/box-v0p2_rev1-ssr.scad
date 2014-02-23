@@ -151,39 +151,7 @@ if(box_layout == BOX_LAYOUT_STACKED) {
     layer_1();
     
     if(use_lilypads == true) {
-        /* Side lilypads (elliptical) */
-        translate([0, box_total_length/2, 0])
-        scale([1, 0.5, 1])
-        cylinder(h = lilypad_height, r = lilypad_large_radius);
-        
-        translate([0, -box_total_length/2, 0])
-        scale([1, 0.5, 1])
-        cylinder(h = lilypad_height, r = lilypad_large_radius);
-        
-        /* Corner lilypads */
-        translate([
-            box_total_width + box_layout_spacing/2,
-            box_total_length/2,
-            0])
-        cylinder(h = lilypad_height, r = lilypad_small_radius);
-
-        translate([
-            box_total_width + box_layout_spacing/2,
-            -box_total_length/2,
-            0])
-        cylinder(h = lilypad_height, r = lilypad_small_radius);
-
-        translate([
-            -box_total_width - box_layout_spacing/2,
-            box_total_length/2,
-            0])
-        cylinder(h = lilypad_height, r = lilypad_small_radius);
-
-        translate([
-            -box_total_width - box_layout_spacing/2,
-            -box_total_length/2,
-            0])
-        cylinder(h = lilypad_height, r = lilypad_small_radius);
+        lilypads(2, 1, box_total_width, box_total_length);
     }
 }
 
