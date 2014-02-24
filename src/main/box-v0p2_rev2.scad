@@ -157,6 +157,8 @@ module layer_1() {
             ftdi_hole_offset,
             layer_1_thickness - ftdi_hole_zoffset
         );
+        /* Strut shavings */
+        strut_shaving(BOTTOM_LEFT, layer_1_thickness);
     }
 }
 
@@ -171,6 +173,8 @@ module layer_2() {
             pot_hole_offset,
             (pot_hole_radius + hole_fudge_factor) * 2
         );
+        /* Strut shavings */
+        strut_shaving(BOTTOM_LEFT, layer_2_thickness);
     }
 }
 
