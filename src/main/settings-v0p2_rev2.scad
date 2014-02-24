@@ -67,7 +67,7 @@ pot_hole_offset = -3;
 learn_buttons_side = RIGHT;
 learn_buttons_radius = 2;
 learn_buttons_zoffset = 1.5;
-learn_buttons_offset = 14; /* same offset for both, each side of centre */
+learn_buttons_offset = 15; /* same offset for both, each side of centre */
 
 /* FTDI connector */
 ftdi_hole_side = TOP;
@@ -76,7 +76,7 @@ ftdi_hole_width = 18;
 ftdi_hole_zoffset = 2;
 
 /* LED */
-led_hole_xoffset = 21;
+led_hole_xoffset = 22;
 led_hole_yoffset = 7;
 led_hole_radius = 2.5;
 
