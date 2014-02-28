@@ -38,8 +38,8 @@ layer_0_0_thickness = box_layer_thickness;
 layer_0_1_thickness = 2 * box_layer_thickness;
 layer_0_2_thickness = pcb_thickness;
 layer_0_thickness = layer_0_0_thickness + layer_0_1_thickness + layer_0_2_thickness;
-layer_1_0_thickness = 3; /* Same as learn button zoffset */
-layer_1_1_thickness = 4; /* Same as learn button diameter */
+layer_1_0_thickness = box_layer_thickness;
+layer_1_1_thickness = box_layer_thickness;
 layer_1_thickness = layer_1_0_thickness + layer_1_1_thickness;
 layer_3_thickness = box_layer_thickness;
 layer_2_thickness = box_height - layer_0_thickness - layer_1_thickness - layer_3_thickness;
@@ -82,8 +82,8 @@ led_hole_radius = 2.5;
 
 /* LDR */
 ldr_hole_side = LEFT;
-ldr_hole_offset = -8;
-ldr_hole_width = 6;
+ldr_hole_offset = -10;
+ldr_hole_width = 10;
 
 /* Labels */
 label_learn_chars = ["L"];

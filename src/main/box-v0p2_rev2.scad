@@ -82,10 +82,6 @@ module layer_0() {
 }
 
 module layer_1_0(thickness=box_layer_thickness) {
-    box_spacer_layer(thickness);
-}
-
-module layer_1_1(thickness=box_layer_thickness) {
     difference() {
         box_spacer_layer(thickness);
         /* Wire hole for boiler and power */
@@ -115,6 +111,12 @@ module layer_1_1(thickness=box_layer_thickness) {
     }
 }
 
+module layer_1_1(thickness=box_layer_thickness) {
+    difference() {
+        box_spacer_layer(thickness);
+    }
+}
+
 module layer_1() {
     difference() {
         union() {
@@ -140,16 +142,16 @@ module layer_1() {
             layer_1_thickness - learn_buttons_zoffset
         );
         /* Hole for bottom of potentiometer */
-        translate([0, 0, pot_hole_zoffset])
+        /*translate([0, 0, pot_hole_zoffset])
         box_outside_hole(
             pot_hole_side,
             (pot_hole_radius + hole_fudge_factor) * 2,
             box_wall_width + 0.1,
             pot_hole_offset,
             layer_1_thickness - pot_hole_zoffset
-        );
+        );*/
         /* Hole for FTDI connector */
-        translate([0, 0, ftdi_hole_zoffset])
+        /*translate([0, 0, ftdi_hole_zoffset])*/
         box_outside_hole(
             ftdi_hole_side,
             ftdi_hole_width,
@@ -232,6 +234,7 @@ module print_layer(n) {
         layer_0();
     }
     if ( n == 1 ) {
+        rotate(v=[1,0,0], a=180)
         layer_1();
     }
     if ( n == 2 ) {
@@ -265,7 +268,8 @@ if(box_layout == BOX_LAYOUT_PRINT) {
     translate([
          (box_total_width + box_layout_spacing) / 2,
         -(box_total_length + box_layout_spacing) / 2,
-        0])
+        layer_1_thickness])
+    rotate(v=[1,0,0], a=180)
     layer_1();
 
     translate([
