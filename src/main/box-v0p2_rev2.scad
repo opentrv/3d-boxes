@@ -234,10 +234,12 @@ module print_layer(n) {
         layer_0();
     }
     if ( n == 1 ) {
+        translate([0, 0, layer_1_thickness])
         rotate(v=[1,0,0], a=180)
         layer_1();
     }
     if ( n == 2 ) {
+        translate([0, 0, layer_2_thickness])
         rotate(v=[1,0,0], a=180)
         layer_2();
     }

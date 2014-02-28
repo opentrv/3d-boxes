@@ -271,6 +271,7 @@ module print_layer(n) {
         layer_2();
     }
     if ( n == 3 ) {
+        translate([0, 0, layer_3_thickness])
         rotate(v=[1,0,0], a=180)
         layer_3();
     }
