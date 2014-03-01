@@ -39,12 +39,14 @@ box_corner_radius = 2;
 hole_fudge_factor = 0.3 * fudge_ratio;
 pcb_fudge_factor = 0.8 * fudge_ratio;
 
-/* Layut settings */
+/* Layout settings */
 box_layout_spacing = 10;
+box_layout_hspacing = box_layout_spacing;
+box_layout_vspacing = 2;
 
 /* Lilypad settings */
 lilypad_height = 0.3;
-lilypad_large_radius = box_layout_spacing;
+lilypad_large_radius = box_layout_hspacing;
 lilypad_small_radius = lilypad_large_radius / 2;
 
 /* Cylinder bridge settings */

@@ -51,8 +51,8 @@ usb_connector_offset = 12;
 /* Wire holes */
 /* Boiler and power served by same hole */
 wire_hole_boiler_power_side = LEFT;
-wire_hole_boiler_power_width = 12;
-wire_hole_boiler_power_offset = 0;
+wire_hole_boiler_power_width = 11;
+wire_hole_boiler_power_offset = -0.5;
 wire_hole_antenna_width = 3;
 wire_hole_antenna_side = TOP;
 wire_hole_antenna_offset = 17.5;

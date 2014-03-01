@@ -433,7 +433,7 @@ module lilypad_column(x, rx, ny, box_size_y) {
     /* Start lilypad */
     lilypad(
         x,
-        -(ny * box_size_y + (ny - 1) * box_layout_spacing) / 2,
+        -(ny * box_size_y + (ny - 1) * box_layout_hspacing) / 2,
         rx,
         lilypad_small_radius
     );
@@ -442,7 +442,7 @@ module lilypad_column(x, rx, ny, box_size_y) {
         for ( n = [-(ny - 2) / 2 : (ny - 2) / 2] ) {
             lilypad(
                 x,
-                n * (box_size_y + box_layout_spacing),
+                n * (box_size_y + box_layout_hspacing),
                 rx,
                 lilypad_large_radius
             );
@@ -451,7 +451,7 @@ module lilypad_column(x, rx, ny, box_size_y) {
     /* End lilypad */
     lilypad(
         x,
-        (ny * box_size_y + (ny - 1) * box_layout_spacing) / 2,
+        (ny * box_size_y + (ny - 1) * box_layout_hspacing) / 2,
         rx,
         lilypad_small_radius
     );
@@ -460,7 +460,7 @@ module lilypad_column(x, rx, ny, box_size_y) {
 module lilypads(nx, ny, box_size_x, box_size_y) {
     /* Start column */
     lilypad_column(
-        -(nx * box_size_x + (nx - 1) * box_layout_spacing) / 2,
+        -(nx * box_size_x + (nx - 1) * box_layout_hspacing) / 2,
         lilypad_small_radius,
         ny,
         box_size_y
@@ -469,7 +469,7 @@ module lilypads(nx, ny, box_size_x, box_size_y) {
     if ( nx > 1 ) {
         for ( n = [-(nx - 2) / 2 : (nx - 2) / 2] ) {
             lilypad_column(
-                n * (box_size_x + box_layout_spacing),
+                n * (box_size_x + box_layout_hspacing),
                 lilypad_large_radius,
                 ny,
                 box_size_y
@@ -478,7 +478,7 @@ module lilypads(nx, ny, box_size_x, box_size_y) {
     }
     /* End column */
     lilypad_column(
-        (nx * box_size_x + (nx - 1) * box_layout_spacing) / 2,
+        (nx * box_size_x + (nx - 1) * box_layout_hspacing) / 2,
         lilypad_small_radius,
         ny,
         box_size_y

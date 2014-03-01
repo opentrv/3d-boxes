@@ -251,39 +251,39 @@ module print_layer(n) {
 if(box_layout == BOX_LAYOUT_STACKED) {
     layer_0();
 
-    translate([0, 0, layer_0_thickness + box_layout_spacing])
+    translate([0, 0, layer_0_thickness + box_layout_vspacing])
     layer_1();
 
-    translate([0, 0, layer_0_thickness + layer_1_thickness + 2 * box_layout_spacing])
+    translate([0, 0, layer_0_thickness + layer_1_thickness + 2 * box_layout_vspacing])
     layer_2();
 
-    translate([0, 0, layer_0_thickness + layer_1_thickness + layer_2_thickness + 3 * box_layout_spacing])
+    translate([0, 0, layer_0_thickness + layer_1_thickness + layer_2_thickness + 3 * box_layout_vspacing])
     layer_3();
 }
 if(box_layout == BOX_LAYOUT_PRINT) {
     translate([
-        -(box_total_width + box_layout_spacing) / 2,
-        -(box_total_length + box_layout_spacing) / 2,
+        -(box_total_width + box_layout_hspacing) / 2,
+        -(box_total_length + box_layout_hspacing) / 2,
         0])
     layer_0();
 
     translate([
-         (box_total_width + box_layout_spacing) / 2,
-        -(box_total_length + box_layout_spacing) / 2,
+         (box_total_width + box_layout_hspacing) / 2,
+        -(box_total_length + box_layout_hspacing) / 2,
         layer_1_thickness])
     rotate(v=[1,0,0], a=180)
     layer_1();
 
     translate([
-        -(box_total_width + box_layout_spacing) / 2,
-         (box_total_length + box_layout_spacing) / 2,
+        -(box_total_width + box_layout_hspacing) / 2,
+         (box_total_length + box_layout_hspacing) / 2,
         layer_2_thickness])
     rotate(v=[1,0,0], a=180)
     layer_2();
 
     translate([
-         (box_total_width + box_layout_spacing) / 2,
-         (box_total_length + box_layout_spacing) / 2,
+         (box_total_width + box_layout_hspacing) / 2,
+         (box_total_length + box_layout_hspacing) / 2,
         0])
     layer_3();
     
@@ -295,8 +295,8 @@ if(box_layout == BOX_LAYOUT_1LAYER_PRINT) {
     for ( dx = [ -(n_prints_x - 1) / 2 : (n_prints_x - 1) / 2 ] ) {
         for ( dy = [ -(n_prints_y - 1) / 2 : (n_prints_y - 1) / 2 ] ) {
             translate([
-                dx * (box_total_width + box_layout_spacing),
-                dy * (box_total_length + box_layout_spacing),
+                dx * (box_total_width + box_layout_hspacing),
+                dy * (box_total_length + box_layout_hspacing),
                 0
             ])
             print_layer(layer_to_print);
