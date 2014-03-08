@@ -59,13 +59,13 @@ wire_hole_antenna_offset = 17.5;
 
 /* Potentiometer */
 pot_hole_side = RIGHT;
-pot_hole_radius = 3;
+pot_hole_radius = 3.5;
 pot_hole_zoffset = 6;
 pot_hole_offset = -3;
 
 /* Learn buttons */
 learn_buttons_side = RIGHT;
-learn_buttons_radius = 2;
+learn_buttons_radius = 2.5;
 learn_buttons_zoffset = 1.5;
 learn_buttons_offset = 15; /* same offset for both, each side of centre */
 
