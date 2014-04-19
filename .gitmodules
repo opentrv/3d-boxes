@@ -1,0 +1,3 @@
+[submodule "submodules/nuts-n-bolts"]
+	path = submodules/nuts-n-bolts
+	url = git@github.com:brunogirin/nuts-n-bolts.git

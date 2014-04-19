@@ -29,7 +29,9 @@ all: main playpen
 # number of different people and have been confirmed to be fit
 # for purpose.
 #
-MAIN_OBJECTS =stl/main/box-v0_2r1.stl
+MAIN_OBJECTS =stl/main/box-v0p2_rev1.stl
+MAIN_OBJECTS+=stl/main/box-v0p2_rev1-ssr.stl
+MAIN_OBJECTS+=stl/main/box-v0p2_rev2.stl
 
 main: $(MAIN_OBJECTS)
 
@@ -39,8 +41,7 @@ main: $(MAIN_OBJECTS)
 # the main area once they have been printed by several people
 # and have been confirmed fit for purpose.
 #
-PLAYPEN_OBJECTS =stl/playpen/box-SSR.stl
-PLAYPEN_OBJECTS+=stl/playpen/box-v0_09.stl
+PLAYPEN_OBJECTS =stl/playpen/box-v0_09.stl
 PLAYPEN_OBJECTS+=stl/playpen/box-dd1.stl
 PLAYPEN_OBJECTS+=stl/playpen/m30-connector.stl
 PLAYPEN_OBJECTS+=stl/playpen/trv-connector.stl
@@ -54,9 +55,6 @@ playpen: includes $(PLAYPEN_OBJECTS)
 clean:
 	rm -rf src/include
 	rm -rf stl
-
-cleanall: clean
-	rm -rf deps
 
 # --------------------------
 # ---- Internal targets ----
@@ -73,14 +71,13 @@ stl/%.stl: src/%.scad
 	openscad -m make -o $@ -d $@.deps $<
 
 # Includes and dependencies
-includes: deps
+includes: submodules
 	mkdir -p src/include
-	cp deps/nuts-n-bolts/build/scad/iso261-extended.scad src/include
-	cp deps/nuts-n-bolts/build/scad/screw.scad src/include
+	submodules/nuts-n-bolts/build.sh
+	cp submodules/nuts-n-bolts/build/scad/iso261-extended.scad src/include
+	cp submodules/nuts-n-bolts/build/scad/screw.scad src/include
 
-deps: deps/nuts-n-bolts
-
-deps/nuts-n-bolts:
-	git clone git@github.com:brunogirin/nuts-n-bolts.git deps/nuts-n-bolts
-	deps/nuts-n-bolts/build.sh
+submodules:
+	git submodule init
+	git submodule update
 
