@@ -16,6 +16,12 @@ below:
 - Render it (`Design -> Compile and Render (CGAL)` or `F6`);
 - Export as STL (`Design -> Export as STL...`).
 
+Models are split between two areas:
+- [main](./src/main/README.md): the main models for the project that define
+  boxes for know versions of the electronics;
+- [playpen](./src/playpen/README.md): draft models or partial models to try
+  out concepts, some of which may eventually graduate to main.
+
 Note that some models in the `playpen` area make use of includes that
 are external to this repository. The simplest way to download and install
 those includes is to use `make` in the top level directory:
