@@ -68,15 +68,9 @@ You can also generate a single box if you know which one you want:
 Cleaning up the build products
 ------------------------------
 
-You can clean up build products in two ways:
+Cleaning up the build products is simple:
 
     make clean
-    make cleanall
-
-`make clean` will only clean the build products that are locally generated.
-`make cleanall` will also delete the downloaded dependencies and will require
-you to be connected to the internet next time you run `make`. So if you are
-on the road far from a network connection, make sure you only run `make clean`.
 
 Customising the model
 =====================
