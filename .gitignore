@@ -4,7 +4,6 @@
 *~
 
 # automatically generated directories
-deps/
 src/include/
 stl/
 
