@@ -57,7 +57,7 @@ You can generate the `main` and `playpen` files separately:
 
 You can also generate a single box if you know which one you want:
 
-    make stl/main/box-v0_2r1.stl
+    make stl/main/box-v0p2_rev1.stl
 
 Cleaning up the build products
 ------------------------------
