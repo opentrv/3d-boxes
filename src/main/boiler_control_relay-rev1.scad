@@ -72,20 +72,12 @@ module layer_0() {
 module layer_1_0(thickness=box_layer_thickness) {
     difference() {
         box_spacer_layer(thickness);
-        /* Wire hole for boiler and power */
+        /* Wire hole for boiler and power 5V */
         box_outside_hole(
             wire_hole_boiler_power_side,
             wire_hole_boiler_power_width,
             box_wall_width + 0.1,
             wire_hole_boiler_power_offset,
-            thickness
-        );
-       /* Wire hole for boiler and power 2*/
-        box_outside_hole(
-            wire_hole_boiler_power_side2,
-            wire_hole_boiler_power_width2,
-            box_wall_width + 0.1,
-            wire_hole_boiler_power_offset2,
             thickness
         );
     }
@@ -104,17 +96,28 @@ module layer_1() {
             translate([0, 0, layer_1_0_thickness - 0.1])
                 layer_1_1(layer_1_1_thickness + 0.1);
         }
-       
-       
-
+        /* Wire hole for power 220V */
+        box_round_hole(
+            wire_hole_power220_side,
+            wire_hole_power220_radius,
+            box_wall_width + 0.1,
+            wire_hole_power220_hoffset,
+            layer_1_thickness
+        );
     }
 }
 
 module layer_2() {
     difference() {
         box_spacer_layer(layer_2_thickness);
-       
-        
+        /* Wire hole for power 220V */
+        box_round_hole(
+            wire_hole_power220_side,
+            wire_hole_power220_radius,
+            box_wall_width + 0.1,
+            wire_hole_power220_hoffset,
+            0
+        );
     }
 }
 

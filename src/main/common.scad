@@ -164,6 +164,29 @@ module box_outside_hole(side, width, depth, offset, thickness=box_layer_thicknes
     }
 }
 
+module box_round_hole(side, radius, depth, hoffset, voffset) {
+    if(side == TOP) {
+        translate([hoffset, box_total_length / 2 + 0.1, voffset])
+        rotate(a = 90, v = [1,0,0])
+        cylinder(h = depth + 0.1, r = radius, $fn=cylinder_resolution);
+    }
+    if(side == BOTTOM) {
+        translate([hoffset, -box_total_length / 2 - 0.1, voffset])
+        rotate(a =-90, v = [1,0,0])
+        cylinder(h = depth + 0.1, r = radius, $fn=cylinder_resolution);
+    }
+    if(side == LEFT) {
+        translate([-box_total_width / 2 - 0.1, hoffset, voffset])
+        rotate(a = 90, v = [0,1,0])
+        cylinder(h = depth + 0.1, r = radius, $fn=cylinder_resolution);
+    }
+    if(side == RIGHT) {
+        translate([box_total_width / 2 + 0.1, hoffset, voffset])
+        rotate(a =-90, v = [0,1,0])
+        cylinder(h = depth + 0.1, r = radius, $fn=cylinder_resolution);
+    }
+}
+
 /* Spacer layer (base layer with PCB hole removed and surrounds added */
 module box_spacer_layer(thickness=box_layer_thickness, surround_feet_thickness=0, surround_feet_padding=0) {
     difference() {

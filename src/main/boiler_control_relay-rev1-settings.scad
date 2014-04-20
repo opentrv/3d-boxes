@@ -53,32 +53,32 @@ usb_connector_offset = 12;
 wire_hole_boiler_power_side = LEFT;
 wire_hole_boiler_power_width = 11;
 wire_hole_boiler_power_offset = -0.5;
-wire_hole_antenna_width = 3;
+/*wire_hole_antenna_width = 3;
 wire_hole_antenna_side = TOP;
-wire_hole_antenna_offset = 17.5;
+wire_hole_antenna_offset = 17.5;*/
 
-wire_hole_boiler_power_side2 = RIGHT;
-wire_hole_boiler_power_width2 = 11;
-wire_hole_boiler_power_offset2 = -0.5;
+wire_hole_power220_side = RIGHT;
+wire_hole_power220_radius = 4;
+wire_hole_power220_hoffset = -0.5;
 
 
 /* Potentiometer */
-pot_hole_side = RIGHT;
+/*pot_hole_side = RIGHT;
 pot_hole_radius = 3.5;
 pot_hole_zoffset = 6;
-pot_hole_offset = -3;
+pot_hole_offset = -3;*/
 
 /* Learn buttons */
-learn_buttons_side = RIGHT;
+/*learn_buttons_side = RIGHT;
 learn_buttons_radius = 2.5;
 learn_buttons_zoffset = 1.5;
-learn_buttons_offset = 15; /* same offset for both, each side of centre */
+learn_buttons_offset = 15;*/ /* same offset for both, each side of centre */
 
 /* FTDI connector */
-ftdi_hole_side = TOP;
+/*ftdi_hole_side = TOP;
 ftdi_hole_offset = -10;
 ftdi_hole_width = 18;
-ftdi_hole_zoffset = 2;
+ftdi_hole_zoffset = 2;*/
 
 /* LED */
 led_hole_xoffset = -19.49143125;
@@ -86,9 +86,9 @@ led_hole_yoffset = 12.538525;
 led_hole_radius = 2.5;
 
 /* LDR */
-ldr_hole_side = LEFT;
+/*ldr_hole_side = LEFT;
 ldr_hole_offset = -10;
-ldr_hole_width = 10;
+ldr_hole_width = 10;*/
 
 /* Labels */
 label_opentrv_chars = ["O", "p", "e", "n", "T", "R", "V"];
@@ -106,7 +106,7 @@ nut_recess_height = 2;
 bolt_head_recess_height = 1;
 
 /* Red button dimensions */
-red_button_xwidth = 16;
+/*red_button_xwidth = 16;
 red_button_ywidth = 14;
 red_button_margin = 2;
 red_button_clip_margin = 2;
@@ -117,5 +117,5 @@ red_button_panel_xwidth = red_button_xwidth + 2 * red_button_clip_extent + 2 * r
 red_button_panel_ywidth = red_button_ywidth + 2 * red_button_margin;
 red_button_clip_xwidth = red_button_xwidth + 2 * red_button_clip_extent;
 red_button_clip_ywidth = red_button_ywidth - 2 * red_button_clip_margin;
-red_button_clip_height = red_button_panel_zoffset - red_button_panel_thickness;
+red_button_clip_height = red_button_panel_zoffset - red_button_panel_thickness;*/
 
