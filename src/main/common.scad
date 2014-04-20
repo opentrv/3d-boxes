@@ -16,7 +16,7 @@ under the Licence.
 Author(s) / Copyright (s): Bruno Girin 2013
 */
 
-include <settings.scad>;
+include <common-settings.scad>;
 
 /* Calculated values */
 box_total_width = pcb_width + 2 * box_wall_width;

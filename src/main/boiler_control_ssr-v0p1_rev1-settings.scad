@@ -16,8 +16,8 @@ under the Licence.
 Author(s) / Copyright (s): Bo Herrmannsen, Bruno Girin 2013
 */
 
-include <../main/user-settings.scad>;
-include <../main/settings.scad>;
+include <user-settings.scad>;
+include <common-settings.scad>;
 
 /*
 PCB board measurements

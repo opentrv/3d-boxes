@@ -17,7 +17,7 @@ Author(s) / Copyright (s): Bruno Girin 2013
 */
 
 include <user-settings.scad>;
-include <settings.scad>;
+include <common-settings.scad>;
 
 /*
 PCB board measurements
@@ -49,28 +49,41 @@ usb_connector_side = LEFT;
 usb_connector_offset = 12;
 
 /* Wire holes */
-wire_hole_power_width = 18;
-wire_hole_power_side = TOP;
-wire_hole_power_offset = -8.75;
-wire_hole_boiler_width = 9;
-wire_hole_boiler_side = BOTTOM;
-wire_hole_boiler_offset = 15.625;
+/* Boiler and power served by same hole */
+wire_hole_boiler_power_side = LEFT;
+wire_hole_boiler_power_width = 11;
+wire_hole_boiler_power_offset = -0.5;
 wire_hole_antenna_width = 3;
 wire_hole_antenna_side = TOP;
-wire_hole_antenna_offset = 18.125;
+wire_hole_antenna_offset = 17.5;
 
-/* Secondary board spacers */
-2nd_board_spacer_height = 4;
-2nd_board_spacer_distance_x = 30.2025;
-2nd_board_spacer_distance_y = 9.6825;
-2nd_board_spacer_hole_height = 2nd_board_spacer_height + 1;
-/* Spacer hole radius to fit a number 4 screw with 0.15% bite */
-/* Number 2 screw would be 2.2mm */
-number_4_screw_radius = 2.9 / 2;
-2nd_board_spacer_hole_radius = number_4_screw_radius * 0.85;
-2nd_board_spacer_radius = pcb_mounting_hole_radius * 2;
-2nd_board_offset_x = 5;
-2nd_board_offset_y = 10;
+/* Potentiometer */
+pot_hole_side = RIGHT;
+pot_hole_radius = 3.5;
+pot_hole_zoffset = 6;
+pot_hole_offset = -3;
+
+/* Learn buttons */
+learn_buttons_side = RIGHT;
+learn_buttons_radius = 2.5;
+learn_buttons_zoffset = 1.5;
+learn_buttons_offset = 15; /* same offset for both, each side of centre */
+
+/* FTDI connector */
+ftdi_hole_side = TOP;
+ftdi_hole_offset = -10;
+ftdi_hole_width = 18;
+ftdi_hole_zoffset = 2;
+
+/* LED */
+led_hole_xoffset = 22;
+led_hole_yoffset = 7;
+led_hole_radius = 2.5;
+
+/* LDR */
+ldr_hole_side = LEFT;
+ldr_hole_offset = -10;
+ldr_hole_width = 10;
 
 /* Labels */
 label_learn_chars = ["L"];
@@ -86,4 +99,18 @@ label_recess_depth = layer_3_thickness / 2;
 nut_recess_radius = 6.25 / 2;
 nut_recess_height = 2;
 bolt_head_recess_height = 1;
+
+/* Red button dimensions */
+red_button_xwidth = 16;
+red_button_ywidth = 14;
+red_button_margin = 2;
+red_button_clip_margin = 2;
+red_button_clip_extent = 4;
+red_button_panel_thickness = 1.5;
+red_button_panel_zoffset = 5;
+red_button_panel_xwidth = red_button_xwidth + 2 * red_button_clip_extent + 2 * red_button_margin;
+red_button_panel_ywidth = red_button_ywidth + 2 * red_button_margin;
+red_button_clip_xwidth = red_button_xwidth + 2 * red_button_clip_extent;
+red_button_clip_ywidth = red_button_ywidth - 2 * red_button_clip_margin;
+red_button_clip_height = red_button_panel_zoffset - red_button_panel_thickness;
 

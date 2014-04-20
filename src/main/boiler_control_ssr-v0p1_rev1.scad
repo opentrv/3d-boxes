@@ -16,8 +16,8 @@ under the Licence.
 Author(s) / Copyright (s): Bo Herrmannsen, Bruno Girin 2013
 */
 
-include <settings-v0p2_rev1-ssr.scad>;
-include <box-common.scad>;
+include <boiler_control_ssr-v0p1_rev1-settings.scad>;
+include <common.scad>;
 include <bitmap.scad>;
 
 

@@ -16,8 +16,8 @@ under the Licence.
 Author(s) / Copyright (s): Bruno Girin 2013
 */
 
-include <settings-v0p2_rev2.scad>;
-include <box-common.scad>;
+include <radiator_control-v0p2_rev2-settings.scad>;
+include <common.scad>;
 include <bitmap.scad>;
 
 module layer_0_0(thickness=layer_0_0_thickness) {
