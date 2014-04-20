@@ -125,33 +125,37 @@ module layer_1() {
                 layer_1_1(layer_1_1_thickness + 0.1);
         }
         /* Holes for LEARN buttons */
-        translate([0, 0, learn_buttons_zoffset])
+        translate([0, 0, learn_buttons_zoffset + learn_buttons_radius])
         box_outside_hole(
             learn_buttons_side,
             learn_buttons_radius * 2,
             box_wall_width + 0.1,
             learn_buttons_offset,
-            layer_1_thickness - learn_buttons_zoffset
+            layer_1_thickness - learn_buttons_zoffset - learn_buttons_radius
         );
-        translate([0, 0, learn_buttons_zoffset])
+        box_round_hole(
+            learn_buttons_side,
+            learn_buttons_radius,
+            box_wall_width + 0.1,
+            learn_buttons_offset,
+            learn_buttons_zoffset + learn_buttons_radius
+        );
+        translate([0, 0, learn_buttons_zoffset + learn_buttons_radius])
         box_outside_hole(
             learn_buttons_side,
             learn_buttons_radius * 2,
             box_wall_width + 0.1,
             -learn_buttons_offset,
-            layer_1_thickness - learn_buttons_zoffset
+            layer_1_thickness - learn_buttons_zoffset - learn_buttons_radius
         );
-        /* Hole for bottom of potentiometer */
-        /*translate([0, 0, pot_hole_zoffset])
-        box_outside_hole(
-            pot_hole_side,
-            (pot_hole_radius + hole_fudge_factor) * 2,
+        box_round_hole(
+            learn_buttons_side,
+            learn_buttons_radius,
             box_wall_width + 0.1,
-            pot_hole_offset,
-            layer_1_thickness - pot_hole_zoffset
-        );*/
+            -learn_buttons_offset,
+            learn_buttons_zoffset + learn_buttons_radius
+        );
         /* Hole for FTDI connector */
-        /*translate([0, 0, ftdi_hole_zoffset])*/
         box_outside_hole(
             ftdi_hole_side,
             ftdi_hole_width,
@@ -173,7 +177,14 @@ module layer_2() {
             (pot_hole_radius + hole_fudge_factor) * 2,
             box_wall_width + 0.1,
             pot_hole_offset,
-            (pot_hole_radius + hole_fudge_factor) * 2
+            pot_hole_radius + hole_fudge_factor
+        );
+        box_round_hole(
+            pot_hole_side,
+            pot_hole_radius + hole_fudge_factor,
+            box_wall_width + 0.1,
+            pot_hole_offset,
+            pot_hole_radius + hole_fudge_factor
         );
         /* Strut shavings */
         strut_shaving(BOTTOM_LEFT, layer_2_thickness);
