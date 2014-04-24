@@ -280,13 +280,13 @@ module print_layer(n) {
 if(box_layout == BOX_LAYOUT_STACKED) {
     layer_0();
 
-    translate([0, 0, layer_0_thickness + box_layout_spacing])
+    translate([0, 0, layer_0_thickness + box_layout_vspacing])
     layer_1();
 
-    translate([0, 0, layer_0_thickness + layer_1_thickness + 2 * box_layout_spacing])
+    translate([0, 0, layer_0_thickness + layer_1_thickness + 2 * box_layout_vspacing])
     layer_2();
 
-    translate([0, 0, layer_0_thickness + layer_1_thickness + layer_2_thickness + 3 * box_layout_spacing])
+    translate([0, 0, layer_0_thickness + layer_1_thickness + layer_2_thickness + 3 * box_layout_vspacing])
     layer_3();
 }
 if(box_layout == BOX_LAYOUT_PRINT) {
