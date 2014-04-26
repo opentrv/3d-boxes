@@ -59,7 +59,7 @@ wire_hole_power220_radius = 4;
 wire_hole_power220_hoffset = 15;
 
 wire_tie_width = 10;
-wire_tie_thickness = 2;
+wire_tie_thickness = 1.5;
 wire_tie_iwidth = wire_tie_width - 2 * wire_tie_thickness;
 wire_tie_depth = 4;
 wire_tie_idepth = wire_tie_depth - wire_tie_thickness;
