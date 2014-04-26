@@ -20,6 +20,48 @@ include <boiler_control_relay-rev1-settings.scad>;
 include <common.scad>;
 include <bitmap.scad>;
 
+module wire_tie_half() {
+    difference() {
+        cube(size=[
+            wire_tie_depth + wire_hole_power220_radius + 0.1,
+            wire_tie_width,
+            wire_tie_height / 2
+        ]);
+        translate([0, -0.1, wire_tie_height / 2])
+        rotate(a = -90, v = [1, 0, 0])
+        cylinder(r = wire_hole_power220_radius, h = wire_tie_width + 0.2);
+        translate([
+            wire_hole_power220_radius + wire_tie_thickness,
+            wire_tie_thickness,
+            -0.1
+        ])
+        cube(size=[
+            wire_tie_idepth + 0.2,
+            wire_tie_iwidth,
+            wire_tie_height / 2 + 0.2
+        ]);
+    }
+}
+
+module wire_tie_bottom_half() {
+    translate([
+        pcb_width / 2 - wire_tie_depth - wire_hole_power220_radius,
+        wire_tie_offset - wire_tie_width / 2,
+        layer_1_thickness - wire_tie_height / 2
+    ])
+    wire_tie_half();
+}
+
+module wire_tie_top_half() {
+    translate([
+        pcb_width / 2 - wire_tie_depth - wire_hole_power220_radius,
+        wire_tie_offset + wire_tie_width / 2,
+        wire_tie_height / 2
+    ])
+    rotate(v=[1,0,0], a=180)
+    wire_tie_half();
+}
+
 module layer_0_0(thickness=layer_0_0_thickness) {
     union() {
         difference() {
@@ -95,6 +137,7 @@ module layer_1() {
             layer_1_0(layer_1_0_thickness);
             translate([0, 0, layer_1_0_thickness - 0.1])
                 layer_1_1(layer_1_1_thickness + 0.1);
+            wire_tie_bottom_half();
         }
         /* Wire hole for power 220V */
         box_round_hole(
@@ -108,16 +151,19 @@ module layer_1() {
 }
 
 module layer_2() {
-    difference() {
-        box_spacer_layer(layer_2_thickness);
-        /* Wire hole for power 220V */
-        box_round_hole(
-            wire_hole_power220_side,
-            wire_hole_power220_radius,
-            box_wall_width + 0.1,
-            wire_hole_power220_hoffset,
-            0
-        );
+    union() {
+        difference() {
+            box_spacer_layer(layer_2_thickness);
+            /* Wire hole for power 220V */
+            box_round_hole(
+                wire_hole_power220_side,
+                wire_hole_power220_radius,
+                box_wall_width + 0.1,
+                wire_hole_power220_hoffset,
+                0
+            );
+        }
+        wire_tie_top_half();
     }
 }
 
@@ -127,9 +173,6 @@ module layer_3() {
             box_base(layer_3_thickness);
             
         }
-       
-        
-           
         box_mounting_holes(layer_3_thickness);
         /* OpenTRV Boiler Control label */
         translate([
@@ -175,8 +218,6 @@ module print_layer(n) {
         layer_1();
     }
     if ( n == 2 ) {
-        translate([0, 0, layer_2_thickness])
-        rotate(v=[1,0,0], a=180)
         layer_2();
     }
     if ( n == 3 ) {
@@ -213,8 +254,7 @@ if(box_layout == BOX_LAYOUT_PRINT) {
     translate([
         -(box_total_width + box_layout_hspacing) / 2,
          (box_total_length + box_layout_hspacing) / 2,
-        layer_2_thickness])
-    rotate(v=[1,0,0], a=180)
+        0])
     layer_2();
 
     translate([
