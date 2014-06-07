@@ -81,7 +81,7 @@ led_hole_yoffset = 6;
 led_hole_radius = 2.5;
 
 /* PHT */
-pht_hole_xoffset = -12.5;
+pht_hole_xoffset = -16.5;
 pht_hole_yoffset = -9.5;
 pht_hole_radius = 2.5;
 
