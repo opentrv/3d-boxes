@@ -77,7 +77,7 @@ ftdi_hole_zoffset = 2;
 
 /* LED */
 led_hole_xoffset = 22;
-led_hole_yoffset = 7;
+led_hole_yoffset = 6;
 led_hole_radius = 2.5;
 
 /* LDR */
