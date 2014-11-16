@@ -22,16 +22,18 @@
 # Default target that creates STL files for all objects in
 # the repository, including main and playpen areas.
 #
-all: main playpen
+all: main
 
 #
 # Main boxes. The objects in this list have been printed by a
 # number of different people and have been confirmed to be fit
 # for purpose.
 #
-MAIN_OBJECTS =stl/main/box-v0p2_rev1.stl
-MAIN_OBJECTS+=stl/main/box-v0p2_rev1-ssr.stl
-MAIN_OBJECTS+=stl/main/box-v0p2_rev2.stl
+MAIN_OBJECTS =stl/main/boiler_control_relay-rev1.stl
+MAIN_OBJECTS+=stl/main/boiler_control_ssr-v0p2_rev1.stl
+MAIN_OBJECTS+=stl/main/radiator_control-v0p2_rev1.stl
+MAIN_OBJECTS+=stl/main/radiator_control-v0p2_rev2.stl
+MAIN_OBJECTS+=stl/main/radiator_control-v0p2_rev3.stl
 
 main: $(MAIN_OBJECTS)
 
